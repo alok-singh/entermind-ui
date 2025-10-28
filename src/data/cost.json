@@ -1,0 +1,33 @@
+{
+  "metricSection": {
+    "sectionTitle": "Cost Intelligence",
+    "sectionDescription": "AI-Powered Total Cost of Ownership Analysis",
+    "badgeTitle": "Live Data Connected",
+    "cards": [
+      {
+        "title": "Total Annual Cost",
+        "value": "$2.85M",
+        "description": "vs last month",
+        "change": "2.3%"
+      },
+      {
+        "title": "Optimization Potential",
+        "value": "$1.38M",
+        "description": "48% total savings possible",
+        "change": "2.3%"
+      },
+      {
+        "title": "Active Anomalies",
+        "value": "1",
+        "description": "1 critical/high priority",
+        "change": "2.3%"
+      },
+      {
+        "title": "AI Recommendations",
+        "value": "3",
+        "description": "2 Quick Wins available",
+        "change": "2.3%"
+      }
+    ]
+  }
+}

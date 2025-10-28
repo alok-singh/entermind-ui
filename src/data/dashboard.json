@@ -1,0 +1,106 @@
+{
+  "commandCenterSection": {
+    "sectionTitle": "AI P&L Command Center",
+    "sectionDescription": "Real-time economics intelligence • ",
+    "lastUpdateTime": "Last updated 4:14:03 PM",
+    "totalCost": {
+      "badgeText": "Total Cost",
+      "highlight": "$0",
+      "message": "0.0% MoM",
+      "description": "$0 monthly burn rate",
+      "status": "positive"
+    },
+    "target": {
+      "badgeText": "Below Target",
+      "highlight": "412%",
+      "message": "Target: 565%",
+      "progress": 73
+    },
+    "breakEven": {
+      "badgeText": "breakeven",
+      "highlight": "$0",
+      "message": "Net value generated",
+      "description": "$0 total value • $0 cost",
+      "status": "positive"
+    },
+    "burnRate": {
+      "badgeText": "Burn Rate",
+      "highlight": "N/A",
+      "message": "Financial runway",
+      "description": "At current $0/mo burn",
+      "status": "positive"
+    }
+  },
+  "opportunitySection": {
+    "sectionTitle": "Priority Optimization Opportunities",
+    "cards": [
+      {
+        "type": "critical",
+        "title": "Implement Smart Model Routing (65% GPT-4 → GPT-4o)",
+        "description": "AI detected 65% of GPT-4 calls have complexity scores <0.6, suitable for GPT-4o with 50% cost savings.",
+        "amount": "$345K",
+        "savingDuration": "Annual savings"
+      },
+      {
+        "type": "high",
+        "title": "Deploy Semantic Caching (42% Redundancy Elimination)",
+        "description": "Pattern analysis shows 42% of embedding requests are duplicates within 7-day windows.",
+        "amount": "$221K",
+        "savingDuration": "Annual savings"
+      },
+      {
+        "type": "high",
+        "title": "Prompt Template Optimization (28% Token Reduction)",
+        "description": "AI analyzed 125K prompts and identified verbose patterns. Optimized templates maintain 99.2% quality.",
+        "amount": "$180K",
+        "savingDuration": "Annual savings"
+      }
+    ]
+  },
+  "promotionalWidgetSection": {
+    "sectionTitle": "AI-Powered Strategic Insight",
+    "sectionDescription": "ROI tracking 73% to target. Review optimization opportunities to close the gap.",
+    "linkText": "View Full Analysis",
+    "link": "/dashboard"
+  },
+  "chartSection": {
+    "chartList": [
+      {
+        "id": "cost-trajectory-chart",
+        "title": "Cost vs Value Trajectory",
+        "description": "6-month performance trend",
+        "badgeText": "Live",
+        "type": "line",
+        "data": {
+          "labels": ["Aug", "Sep", "Oct", "Nov", "Dec", "Jan"],
+          "datasets": [
+            {
+              "label": "Cost",
+              "data": [10, 20, 30, 10, 20, 50]
+            },
+            {
+              "label": "Value",
+              "data": [15, 21, 33, 14, 23, 61]
+            }
+          ]
+        }
+      },
+      {
+        "id": "roi-chart",
+        "title": "ROI Evolution",
+        "description": "Monthly performance growth",
+        "badgeText": "Trending Up",
+        "type": "bar",
+        "data": {
+          "labels": ["Aug", "Sep", "Oct", "Nov", "Dec", "Jan"],
+          "datasets": [
+            {
+              "label": "ROI",
+              "data": [39, 330, 350, 371, 391, 402]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

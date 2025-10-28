@@ -1,0 +1,173 @@
+{
+  "headerSection": {
+    "sectionTitle": "Data Input Center",
+    "sectionDescription": "Multiple ways to get your data into Integrity: Templates, Manual Entry, PDF Bills, or API Integrations",
+    "cards": [
+      {
+        "title": 0,
+        "description": "Recent Entries",
+        "iconProps": {
+          "width": "28px",
+          "height": "28px",
+          "color": "rgba(0,102,255,0.2)"
+        },
+        "icon": "database"
+      },
+      {
+        "title": 0,
+        "description": "Active Integrations",
+        "iconProps": {
+          "width": "28px",
+          "height": "28px",
+          "color": "rgba(0,214,143,0.2)"
+        },
+        "icon": "cloud"
+      },
+      {
+        "title": 3,
+        "description": "Templates Available",
+        "iconProps": {
+          "width": "28px",
+          "height": "28px",
+          "color": "rgba(0,102,255,0.2)"
+        },
+        "icon": "file"
+      },
+      {
+        "title": 3,
+        "description": "Input Methods",
+        "iconProps": {
+          "width": "28px",
+          "height": "28px",
+          "color": "rgba(245,74,0,0.2)"
+        },
+        "icon": "sparkles"
+      }
+    ]
+  },
+  "tabsSection": [
+    {
+      "title": "CSV/XLS Templates",
+      "icon": "file",
+      "iconProps": { "width": "14px", "height": "14px" },
+      "descriptionCard": {
+        "title": "Enterprise-Grade Data Templates",
+        "description": "Download pre-configured CSV/XLS templates with validation rules, examples, and field guides. Perfect for bulk imports from billing systems that don't have API access.",
+        "badgeText": "Professional Grade",
+        "icon": "sparkles",
+        "iconProps": { "width": "17.5px", "height": "17.5px", "color": "#06f" }
+      },
+      "cardSection": [
+        {
+          "title": "AI Cost Entry Template",
+          "badgeText": "9 fields",
+          "description": "Import AI platform costs, infrastructure expenses, and vendor bills",
+          "additionalParams": [
+            { "key": "Sample Data", "value": "3 rows" },
+            { "key": "Required Fields", "value": "5" }
+          ],
+          "footerDescription": "Includes validation rules, examples, and field descriptions",
+          "icon": "dollar",
+          "iconProps": {
+            "width": "21px",
+            "height": "21px",
+            "color": "#06f"
+          },
+          "downloadFileLink": "/cost-entry-template.csv"
+        },
+        {
+          "title": "ROI & Value Realization Template",
+          "badgeText": "10 fields",
+          "description": "Track revenue gains, cost savings, and efficiency improvements",
+          "additionalParams": [
+            { "key": "Sample Data", "value": "3 rows" },
+            { "key": "Required Fields", "value": "5" }
+          ],
+          "footerDescription": "Includes validation rules, examples, and field descriptions",
+          "icon": "trendingUp",
+          "iconProps": {
+            "width": "21px",
+            "height": "21px",
+            "color": "#00d68f"
+          },
+          "downloadFileLink": "/roi-entry-template.csv"
+        },
+        {
+          "title": "Usage & Consumption Template",
+          "badgeText": "8 fields",
+          "description": "Track API calls, compute hours, token usage, and resource consumption",
+          "additionalParams": [
+            { "key": "Sample Data", "value": "2 rows" },
+            { "key": "Required Fields", "value": "4" }
+          ],
+          "footerDescription": "Includes validation rules, examples, and field descriptions",
+          "icon": "chart",
+          "iconProps": {
+            "width": "21px",
+            "height": "21px",
+            "color": "#06f"
+          },
+          "downloadFileLink": "/usage-tracking-template.csv"
+        }
+      ],
+      "guideSection": {
+        "icon": "zap",
+        "iconProps": {
+          "color": "#00d68f",
+          "height": "17.5px",
+          "width": "17.5px"
+        },
+        "sectionTitle": "Quick Start Guide",
+        "steps": [
+          {
+            "title": "Download Template",
+            "description": "Choose the template that matches your data type and download it"
+          },
+
+          {
+            "title": "Fill in Your Data",
+            "description": "Open in Excel/Google Sheets, fill in your data following the examples"
+          },
+          {
+            "title": "Upload & Validate",
+            "description": "Upload the completed file - we'll validate and import automatically"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Bulk Upload",
+      "icon": "upload",
+      "iconProps": { "width": "14px", "height": "14px" },
+      "details": {
+        "title": "Upload CSV/XLS File",
+        "description": "Bulk import cost entries, ROI data, or usage metrics from your filled template",
+        "icon": "upload",
+        "iconProps": { "className": "mx-auto h-12 w-12 text-gray-400" },
+        "uploadBoxTitle": "Drop your CSV/XLS file here"
+      }
+    },
+    {
+      "title": "PDF Bills",
+      "icon": "fileText",
+      "iconProps": { "width": "14px", "height": "14px" },
+      "details": {
+        "title": "PDF Bill Processing",
+        "description": "Upload PDF bills from vendors without API access. We'll extract the data automatically using OCR.",
+        "icon": "fileText",
+        "iconProps": { "className": "mx-auto h-12 w-12 text-gray-400" },
+        "uploadBoxTitle": "Drop your PDF bill here"
+      }
+    },
+    {
+      "title": "Manual Entry",
+      "icon": "plus",
+      "iconProps": { "width": "14px", "height": "14px" }
+    },
+    {
+      "title": "Entry History",
+      "icon": "database",
+      "iconProps": { "width": "14px", "height": "14px" }
+    }
+  ]
+}

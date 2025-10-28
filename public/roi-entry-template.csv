@@ -1,0 +1,3 @@
+date,initiative,category,value_type,amount,kpi,confidence,mechanism,agents,notes
+"# ""Date value was realized or projected""",AI initiative or use case name,Type of value delivered,Realization status,Value amount in USD,Key performance indicator affected,Confidence level (0-100),How value was created,AI agents involved,Supporting evidence or context
+"# ""2025-01-15""",AI-Powered Lead Qualification,Revenue Growth,Realized,125000,+45% conversion rate,92,Automated lead scoring reduced time-to-contact by 68%,"Moana (Business), Maka (Product)",Based on Q4 2024 sales data analysis
