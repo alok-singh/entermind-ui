@@ -1,10 +1,13 @@
-import { AlertCircle, CheckCheck, Eye } from "lucide-react";
+import { AlertCircle, CheckCheck, Eye, Loader } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../../components/button";
 import Table from "../../components/table";
 import UploadInput from "../../components/upload-input";
+import { TEMPLATES } from "../../config/vars";
 import iconMap from "../../icons/lucid-icons";
-import { setUploadData } from "../../reducers/data-page-reducer";
+import { setUploadData, setUploadLoading } from "../../reducers/data-page-reducer";
+import { createTemplateRequestBody } from "../../utils/create-request-body.util";
+import { postResource } from "../../utils/http.util";
 import { parseCSVFile } from "../../utils/parse.util";
 
 const UploadHeader = (props) => {
@@ -45,7 +48,7 @@ const ValidationSummary = (props) => {
         </div>
         <div className="w-full h-2 bg-gray-200 rounded">
           <div
-            className="h-2 bg-blue-600 rounded"
+            className="h-2 bg-[#007aff] text-[600] rounded"
             style={{ width: `${progress}%` }}
           ></div>
         </div>
@@ -81,7 +84,7 @@ const DataPreview = (props) => {
         <h2 className="text-lg font-semibold text-gray-800">Data Preview</h2>
       </div>
       <p className="text-sm text-gray-500 mb-4">
-        Template: {props.template.name}, <br /> Showing first {rows.length} rows
+        Template: {props.template.name} <br /> Showing first {rows.length} rows
       </p>
 
       {props.isValid ? (
@@ -102,10 +105,11 @@ const DataPreview = (props) => {
       {props.isValid ? (
         <div className="flex items-center justify-center">
           <Button
-            className="bg-[#007aff] text-white p-2 my-4 text-[14px] w-[100px]"
+          
+            className="bg-[#007aff] text-white px-4 py-2 my-4 text-[14px]"
             onClick={props.processFile}
           >
-            Submit file
+            {props.isLoading ? <div className="flex items-center gap-2"><Loader width="14px" height="14px" className="animate-spin"/> Uploading ...</div> : "Submit file"}
           </Button>
         </div>
       ) : null}
@@ -115,7 +119,7 @@ const DataPreview = (props) => {
 
 const FileUploadSection = (props) => {
   const dispatch = useDispatch();
-  const { fileName, errors, data, totalRows, validRows, template } =
+  const { fileName, errors, data, totalRows, validRows, template, isLoading } =
     useSelector((state) => state.uploadPage.value.uploadCSV);
 
   const handleFileChange = async ([file]) => {
@@ -123,8 +127,13 @@ const FileUploadSection = (props) => {
     dispatch(setUploadData({ fileName: file?.name, results }));
   };
 
-  const processFile = () => {
+  const processFile = async () => {
     // api call to send data to server
+    const postUrl = TEMPLATES[template.name].POST_API;
+    const requestBody = createTemplateRequestBody(data);
+    dispatch(setUploadLoading(true));
+    const result = await postResource(postUrl, requestBody);
+    dispatch(setUploadLoading(false));
   };
 
   return (
@@ -151,6 +160,7 @@ const FileUploadSection = (props) => {
           template={template}
           isValid={errors.length === 0}
           processFile={processFile}
+          isLoading={isLoading}
         />
       ) : null}
     </div>

@@ -10,8 +10,10 @@ import {
   setUserName,
 } from "../../reducers/login-reducer";
 
-import { USER_NAME, USER_SECRET } from "../../config/vars";
+import { LOGIN_KEY, USER_NAME, USER_SECRET } from "../../config/vars";
 import LoaderIcon from "../../icons/loader";
+import { useEffect } from "react";
+import { getLocalStorageItem } from "../../utils/local-storage.util";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -29,6 +31,13 @@ const LoginPage = () => {
       dispatch(setLoading(false));
     }, 2000);
   };
+
+  useEffect(() => {
+    const isLoggedIn = getLocalStorageItem(LOGIN_KEY);
+    if (isLoggedIn) {
+      navigate("/dashboard");
+    }
+  }, []);
 
   return isLoading ? (
     <div className="w-screen h-screen flex items-center justify-center">
@@ -62,7 +71,10 @@ const LoginPage = () => {
                 onChange={({ target }) => dispatch(setPassword(target.value))}
                 className="mb-6"
               />
-              <Button type="submit" className="w-full bg-[#007aff] text-white p-3.5 text-[14px]">
+              <Button
+                type="submit"
+                className="w-full bg-[#007aff] text-white p-3.5 text-[14px]"
+              >
                 Sign In
               </Button>
             </form>

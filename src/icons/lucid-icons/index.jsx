@@ -10,6 +10,10 @@ import {
   TrendingUp,
   Upload,
   Zap,
+  Brain,
+  Cpu,
+  Users,
+  Layers
 } from "lucide-react";
 
 const iconMap = {
@@ -24,6 +28,10 @@ const iconMap = {
   dollar: (props) => <DollarSign {...props} />,
   trendingUp: (props) => <TrendingUp {...props} />,
   chart: (props) => <ChartColumn {...props} />,
+  brain: (props) => <Brain {...props} />,
+  cpu: (props) => <Cpu {...props} />,
+  users: (props) => <Users {...props} />,
+  layers: (props) => <Layers {...props} />
 };
 
 export default iconMap;

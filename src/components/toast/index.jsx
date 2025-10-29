@@ -5,15 +5,11 @@ import {
   OctagonXIcon,
   TriangleAlertIcon,
 } from "lucide-react";
-import { useTheme } from "next-themes";
 import { Toaster as Sonner } from "sonner";
 
 const Toaster = (props) => {
-  const { theme = "system" } = useTheme();
-
   return (
     <Sonner
-      theme={theme}
       className="toaster group"
       icons={{
         success: <CircleCheckIcon className="size-4" />,
@@ -23,10 +19,10 @@ const Toaster = (props) => {
         loading: <Loader2Icon className="size-4 animate-spin" />,
       }}
       style={{
-        "--normal-bg": "var(--popover)",
-        "--normal-text": "var(--popover-foreground)",
-        "--normal-border": "var(--border)",
-        "--border-radius": "var(--radius)",
+        "--normal-bg": "white",
+        "--normal-text": "#0f1419",
+        "--normal-border": "#e2e8f0",
+        "--border-radius": "7px",
       }}
       {...props}
     />

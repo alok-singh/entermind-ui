@@ -6,7 +6,7 @@ import ChartSection from "./chart-section";
 
 const Dashboard = () => {
   return (
-    <div className="bg-[#f5f5f7]">
+    <div className="bg-[#f5f5f7] min-h-screen">
       <CommandCenterSection {...data.commandCenterSection} />
       <PromotionalWidgetSection {...data.promotionalWidgetSection} />
       <ChartSection {...data.chartSection} />

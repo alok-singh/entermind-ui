@@ -1,122 +1,87 @@
-const CATEGORIES = ['AI Model Costs', 'Infrastructure & Compute', 'Agent Platform Licenses', 'Talent Costs', 'Data & Integration'];
-
-const formats = {
-  cost: [
-    'date',
-    'vendor',
-    'category',
-    'subcategory',
-    'amount',
-    'units',
-    'project',
-    'tags',
-    'notes',
-  ],
-  roi: [
-    'date',
-    'initiative',
-    'category',
-    'value_type',
-    'amount',
-    'kpi',
-    'confidence',
-    'mechanism',
-    'agents',
-    'notes',
-  ],
-  usage: [
-    'date',
-    'platform',
-    'metric_type',
-    'quantity',
-    'unit_cost',
-    'total_cost',
-    'agent_or_project',
-    'environment',
-  ]
-};
+import { CATEGORIES, TEMPLATES } from "../config/vars";
 
 export const getFileTemplate = (columns) => {
   const templateString = columns.sort().join('-');
-  const isCostTemplate = formats.cost.sort().join('-') === templateString;
-  const isRoiTemplate = formats.roi.sort().join('-') === templateString;
-  const isUsageTemplate = formats.usage.sort().join('-') === templateString;
-  const name = isCostTemplate ? 'Cost Template' : isRoiTemplate ? 'ROI Template' : isUsageTemplate ? 'Usage Template' : 'Invalid';
-  return { name, isValid: (isCostTemplate || isRoiTemplate || isUsageTemplate) };
+  const templateType = Object.keys(TEMPLATES).find(templateName => {
+    return TEMPLATES[templateName].FIELDS.sort().join('-') === templateString;
+  });
+
+  return { name: templateType, isValid: !!(templateType) };
 }
 
-export const validators = {
+export const fieldValidators = {
   date: (value) => {
     const regex = /^\d{4}-\d{2}-\d{2}$/;
     if (regex.test(value)) {
-      return { isValid: true };
+      const [year, month, date] = value.split('-').map(item => parseInt(item));
+      return { isValid: true, value: (new Date(year, month, date)).getTime() };
     }
     return { isValid: false, error: 'date must be a valid date (YYYY-MM-DD)' };
   },
-  vendor: () => {
-    return { isValid: true };
+  vendor: (value) => {
+    return { isValid: true, value: value };
   },
   category: (value) => {
     if (CATEGORIES.includes(value)) {
-      return { isValid: true };
+      return { isValid: true, value: value };
     }
     return { isValid: false, error: `category must be one of: ${CATEGORIES.join(', ')}` };
   },
-  subcategory: () => {
-    return { isValid: true };
+  subcategory: (value) => {
+    return { isValid: true, value: value };
   },
-  amount: () => {
-    return { isValid: true };
+  amount: (value) => {
+    return { isValid: true, value: parseInt(value) };
   },
-  units: () => {
-    return { isValid: true };
+  units: (value) => {
+    return { isValid: true, value: parseInt(value) };
   },
-  project: () => {
-    return { isValid: true };
+  project: (value) => {
+    return { isValid: true, value: value };
   },
-  tags: () => {
-    return { isValid: true };
+  tags: (value) => {
+    return { isValid: true, value: value };
   },
-  notes: () => {
-    return { isValid: true };
+  notes: (value) => {
+    return { isValid: true, value: value };
   },
-  initiative: () => {
-    return { isValid: true };
+  initiative: (value) => {
+    return { isValid: true, value: value };
   },
-  value_type: () => {
-    return { isValid: true };
+  valueType: (value) => {
+    return { isValid: true, value: value };
   },
-  kpi: () => {
-    return { isValid: true };
+  kpi: (value) => {
+    return { isValid: true, value: value };
   },
-  confidence: () => {
-    return { isValid: true };
+  confidence: (value) => {
+    return { isValid: true, value: value };
   },
-  mechanism: () => {
-    return { isValid: true };
+  mechanism: (value) => {
+    return { isValid: true, value: value };
   },
-  agents: () => {
-    return { isValid: true };
+  agents: (value) => {
+    return { isValid: true, value: value };
   },
-  platform: () => {
-    return { isValid: true };
+  platform: (value) => {
+    return { isValid: true, value: value };
   },
-  metric_type: () => {
-    return { isValid: true };
+  metricType: (value) => {
+    return { isValid: true, value: value };
   },
-  quantity: () => {
-    return { isValid: true };
+  quantity: (value) => {
+    return { isValid: true, value: parseInt(value) };
   },
-  unit_cost: () => {
-    return { isValid: true };
+  unitCost: (value) => {
+    return { isValid: true, value: parseInt(value) };
   },
-  total_cost: () => {
-    return { isValid: true };
+  totalCost: (value) => {
+    return { isValid: true, value: parseInt(value) };
   },
-  agent_or_project: () => {
-    return { isValid: true };
+  agentOrProject: (value) => {
+    return { isValid: true, value: value };
   },
-  environment: () => {
-    return { isValid: true };
+  environment: (value) => {
+    return { isValid: true, value: value };
   },
 }

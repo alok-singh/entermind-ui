@@ -6,27 +6,269 @@
     "cards": [
       {
         "title": "Total Annual Cost",
+        "titleClassName": "text-xs text-[#5c6370]",
+        "cardClassName": "text-card-foreground flex flex-col rounded-xl border bg-gradient-to-br from-[#0066ff]/10 to-transparent border-[#0066ff]/20",
         "value": "$2.85M",
-        "description": "vs last month",
-        "change": "2.3%"
+        "valueClassName": "text-2xl mt-[32px]",
+        "description": "2.3% vs last month",
+        "descriptionClassName": "text-[10.5px] text-[#5c6370] mt-2"
       },
       {
         "title": "Optimization Potential",
+        "titleClassName": "text-xs text-[#5c6370]",
         "value": "$1.38M",
         "description": "48% total savings possible",
-        "change": "2.3%"
+        "cardClassName": "text-card-foreground flex flex-col rounded-xl border bg-gradient-to-br from-[#00d68f]/10 to-transparent border-[#00d68f]/20",
+        "valueClassName": "text-2xl text-[#00d68f] mt-[32px]",
+        "descriptionClassName": "text-[10.5px] text-[#5c6370] mt-2"
       },
       {
         "title": "Active Anomalies",
+        "titleClassName": "text-xs text-[#5c6370]",
         "value": "1",
         "description": "1 critical/high priority",
-        "change": "2.3%"
+        "cardClassName": "text-card-foreground flex flex-col rounded-xl border bg-gradient-to-br from-orange-500/10 to-transparent border-orange-500/20",
+        "valueClassName": "text-2xl mt-[32px]",
+        "descriptionClassName": "text-[10.5px] text-[#5c6370] mt-2"
       },
       {
         "title": "AI Recommendations",
+        "titleClassName": "text-xs text-[#5c6370]",
         "value": "3",
         "description": "2 Quick Wins available",
-        "change": "2.3%"
+        "cardClassName": "text-card-foreground flex flex-col rounded-xl border bg-gradient-to-br from-purple-500/10 to-transparent border-purple-500/20",
+        "valueClassName": "text-2xl mt-[32px]",
+        "descriptionClassName": "text-[10.5px] text-[#5c6370] mt-2"
+      }
+    ]
+  },
+  "tabsSection": [
+    { "title": "TCO Overview" },
+    { "title": "Category Breakdown" },
+    { "title": "Anomalies" },
+    { "title": "AI Recommendations" }
+  ],
+  "costOverview": {
+    "chartSection": {
+      "chartList": [
+        {
+          "id": "cost-distribution",
+          "title": "Cost distribution",
+          "type": "pie",
+          "height": "300px",
+          "data": {
+            "labels": ["AI", "Infrastructure", "Agent", "Talent", "Data"],
+            "datasets": [
+              {
+                "data": [1250000, 420000, 390000, 550000, 350000]
+              }
+            ]
+          },
+          "options": {
+            "responsive": true,
+            "plugins": {
+              "legend": {
+                "position": "left"
+              }
+            }
+          }
+        },
+        {
+          "id": "category-breakdown",
+          "title": "Category Breakdown",
+          "type": "bar",
+          "data": {
+            "labels": ["AI", "Infrastructure", "Agent", "Talent", "Data"],
+            "datasets": [
+              {
+                "label": "Cost",
+                "data": [1250000, 420000, 390000, 550000, 350000]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "costTrendSection": {
+      "trends": [
+        { "label": "Month-over-Month", "value": -2.3 },
+        { "label": "Quarter-over-Quarter", "value": 5.8 },
+        { "label": "Year-over-Year", "value": 12.4 }
+      ]
+    }
+  },
+  "costBreakdown": {
+    "breakdownList": [
+      {
+        "icon": "brain",
+        "iconProps": { "className": "text-blue-500" },
+        "textLeftTop": "AI Model Costs",
+        "textLeftBottom": "$1245K annually • 44% of total",
+        "textRightTop": "$746K savings",
+        "textRightBottom": "60% reduction possible",
+        "details": [
+          {
+            "name": "LLM API Calls (GPT-4, Claude)",
+            "status": "increasing",
+            "amount": "$685.0K"
+          },
+          {
+            "name": "Embedding Models",
+            "status": "stable",
+            "amount": "$245.0K"
+          },
+          {
+            "name": "Vector Database (Pinecone/Weaviate)",
+            "status": "increasing",
+            "amount": "$185.0K"
+          },
+          {
+            "name": "Fine-tuning & Training",
+            "status": "stable",
+            "amount": "$130.0K"
+          }
+        ]
+      },
+      {
+        "icon": "database",
+        "iconProps": { "className": "text-blue-500" },
+        "textLeftTop": "Infrastructure & Compute",
+        "textLeftBottom": "$425K annually • 15% of total",
+        "textRightTop": "$272K savings",
+        "textRightBottom": "64% reduction possible",
+        "details": [
+          {
+            "name": "Cloud Hosting (AWS/Azure)",
+            "status": "stable",
+            "amount": "$185.0K"
+          },
+          {
+            "name": "GPU/TPU Compute",
+            "status": "increasing",
+            "amount": "$125.0K"
+          },
+          {
+            "name": "Storage & Data Transfer",
+            "status": "stable",
+            "amount": "$85.0K"
+          },
+          {
+            "name": "Monitoring & Logging",
+            "status": "stable",
+            "amount": "$30.0K"
+          }
+        ]
+      },
+      {
+        "icon": "cpu",
+        "iconProps": { "className": "text-blue-500" },
+        "textLeftTop": "Agent Platform Licenses",
+        "textLeftBottom": "$385K annually • 14% of total",
+        "textRightTop": "$85K savings",
+        "textRightBottom": "22% reduction possible",
+        "details": [
+          {
+            "name": "Lyzr Enterprise License",
+            "status": "stable",
+            "amount": "$180.0K"
+          },
+          {
+            "name": "LangChain Pro",
+            "status": "stable",
+            "amount": "$95.0K"
+          },
+          {
+            "name": "AutoGen Framework",
+            "status": "stable",
+            "amount": "$65.0K"
+          },
+          {
+            "name": "Workflow Orchestration",
+            "status": "stable",
+            "amount": "$45.0K"
+          }
+        ]
+      },
+      {
+        "icon": "users",
+        "iconProps": { "className": "text-blue-500" },
+        "textLeftTop": "Talent Costs",
+        "textLeftBottom": "$545K annually • 19% of total",
+        "textRightTop": "$177K savings",
+        "textRightBottom": "32% reduction possible",
+        "details": [
+          {
+            "name": "AI Engineers/ML Ops (3 FTEs)",
+            "status": "stable",
+            "amount": "$285.0K"
+          },
+          {
+            "name": "Manual QA Team (2 FTEs)",
+            "status": "decreasing",
+            "amount": "$140.0K"
+          },
+          {
+            "name": "Junior Data Analysts (2 FTEs)",
+            "status": "decreasing",
+            "amount": "$80.0K"
+          },
+          {
+            "name": "Training & Change Management",
+            "status": "decreasing",
+            "amount": "$40.0K"
+          }
+        ]
+      },
+      {
+        "icon": "layers",
+        "iconProps": { "className": "text-blue-500" },
+        "textLeftTop": "Data & Integration",
+        "textLeftBottom": "$250K annually • 9% of total",
+        "textRightTop": "$101K savings",
+        "textRightBottom": "40% reduction possible",
+        "details": [
+          {
+            "name": "Data Acquisition & Licensing",
+            "status": "stable",
+            "amount": "$125.0K"
+          },
+          {
+            "name": "API Integrations",
+            "status": "increasing",
+            "amount": "$65.0K"
+          },
+          {
+            "name": "Data Pipeline & ETL",
+            "status": "stable",
+            "amount": "$60.0K"
+          }
+        ]
+      }
+    ]
+  },
+  "anomalySection": {
+    "alertCard": [
+      {
+        "title": "GPT-4 Token Usage",
+        "severity": "high",
+        "detectedAt": "2025-10-29T03:29:06.617Z",
+        "description": "Unusual 340% spike in GPT-4 tokens from Moana agent in last 6 hours. Root cause: Prompt template regression causing 3x longer context windows.",
+        "subDescription": "Root cause: Prompt template regression causing 3x longer context windows (v2.1.4 deployment)",
+        "normalValue": "2.8 M tokens/day",
+        "currentValue": "9.5 M tokens/day",
+        "impact": "+$18.2K projected monthly overspend",
+        "recommendation": "Rollback to prompt template v2.1.3"
+      },
+      {
+        "title": "Embedding API Calls",
+        "severity": "info",
+        "detectedAt": "Detected 2025-10-28T13:54:23.039Z",
+        "description": "Cache miss rate increased from 58% to 78%, causing 35% more API calls",
+        "subDescription": "Root cause: Cache invalidation policy changed, TTL reduced from 7 days to 2 days",
+        "normalValue": "58 % cache misses",
+        "currentValue": "78 % cache misses",
+        "impact": "+$4.8K projected monthly overspend",
+        "recommendation": "Recommended action: Restore 7-day TTL policy"
       }
     ]
   }

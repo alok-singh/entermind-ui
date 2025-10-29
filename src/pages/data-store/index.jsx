@@ -1,13 +1,16 @@
-import { Database } from "lucide-react";
-import { useDispatch, useSelector } from "react-redux";
-import Card from "../../components/card";
-import data from "../../data/data-upload-store.json";
-import iconMap from "../../icons/lucid-icons";
-import { setSelectedTabIndex } from "../../reducers/data-page-reducer";
-import EntryHistorySection from "./entry-history-section";
-import ManualEntrySection from "./manual-entry-section";
-import TemplateSection from "./template-section";
-import FileUploadSection from "./upload-file-section";
+import { Database } from 'lucide-react';
+import { useDispatch, useSelector } from 'react-redux';
+import Card from '../../components/card';
+import data from '../../data/data-upload-store.json';
+import iconMap from '../../icons/lucid-icons';
+import { setSelectedTabIndex, uploadHistory } from '../../reducers/data-page-reducer';
+import EntryHistorySection from './entry-history-section';
+import ManualEntrySection from './manual-entry-section';
+import TemplateSection from './template-section';
+import FileUploadSection from './upload-file-section';
+import Tabs from '../../components/tabs';
+import { useEffect } from 'react';
+import { fetchUploadHistory } from './data-store.util';
 
 const PageHeader = (props) => {
   return (
@@ -18,9 +21,7 @@ const PageHeader = (props) => {
         </div>
         <h1 className="text-2xl text-[#0066ff]">{props.sectionTitle}</h1>
       </div>
-      <div className="text-[#5c6370] text-[14px]">
-        {props.sectionDescription}
-      </div>
+      <div className="text-[#5c6370] text-[14px]">{props.sectionDescription}</div>
     </div>
   );
 };
@@ -30,16 +31,11 @@ const HeaderCards = (props) => {
     <div className="mt-[21px] mb-[21px] grid grid-cols-4 gap-4">
       {props.cards.map((item, index) => {
         return (
-          <Card
-            className="border-[#eaeaea] border"
-            key={`${item.title}-${index}`}
-          >
+          <Card className="border-[#eaeaea] border" key={`${item.title}-${index}`}>
             <div className="flex items-center justify-between p-1">
               <div className="card-title">
                 <h3 className="text-[21px] font-semibold">{item.title}</h3>
-                <div className="text-[#5c6370] text-[12.25px]">
-                  {item.description}
-                </div>
+                <div className="text-[#5c6370] text-[12.25px]">{item.description}</div>
               </div>
               {iconMap[item.icon](item.iconProps)}
             </div>
@@ -50,55 +46,29 @@ const HeaderCards = (props) => {
   );
 };
 
-const TabsSection = (props) => {
-  return (
-    <div className="bg-[#f0f2f8] text-[10.5px] p-[3px] w-fit items-center justify-center rounded-xl flex">
-      {props.tabs.map((tab, index) => {
-        return (
-          <div
-            onClick={() => props.setSelectedTabIndex(index)}
-            className={`rounded-xl flex items-center gap-1 pt-[3.5px] pb-[3.5px] pr-[7px] pl-[7px] cursor-pointer ${
-              props.selectedTabIndex === index ? "bg-white" : ""
-            }`}
-          >
-            <div className="icon">{iconMap[tab.icon](tab.iconProps)}</div>
-            <div className="title">{tab.title}</div>
-          </div>
-        );
-      })}
-    </div>
-  );
-};
-
 const DataStorePage = () => {
   const dispatch = useDispatch();
-  const { selectedTabIndex } = useSelector((state) => state.uploadPage.value);
+  const { selectedTabIndex, history } = useSelector((state) => state.uploadPage.value);
+
+  useEffect(() => {
+    const innerFunction = async () => {
+      const response = await fetchUploadHistory();
+      dispatch(uploadHistory(response));
+    };
+    innerFunction();
+  }, []);
 
   return (
-    <div className="bg-[#f5f5f7]">
+    <div className="bg-[#f5f5f7] min-h-screen">
       <div className="max-w-[1400px] mx-auto p-8 bg-white">
         <PageHeader {...data.headerSection} />
         <HeaderCards cards={data.headerSection.cards} />
-        <TabsSection
-          tabs={data.tabsSection}
-          selectedTabIndex={selectedTabIndex}
-          setSelectedTabIndex={(index) => dispatch(setSelectedTabIndex(index))}
-        />
-        {selectedTabIndex === 0 ? (
-          <TemplateSection {...data.tabsSection[selectedTabIndex]} />
-        ) : null}
-        {selectedTabIndex === 1 ? (
-          <FileUploadSection {...data.tabsSection[selectedTabIndex].details} />
-        ) : null}
-        {selectedTabIndex === 2 ? (
-          <FileUploadSection {...data.tabsSection[selectedTabIndex].details} />
-        ) : null}
-        {selectedTabIndex === 3 ? (
-          <ManualEntrySection {...data.tabsSection[selectedTabIndex]} />
-        ) : null}
-        {selectedTabIndex === 4 ? (
-          <EntryHistorySection {...data.tabsSection[selectedTabIndex]} />
-        ) : null}
+        <Tabs tabs={data.tabsSection} selectedTabIndex={selectedTabIndex} setSelectedTabIndex={(index) => dispatch(setSelectedTabIndex(index))} />
+        {selectedTabIndex === 0 ? <TemplateSection {...data.tabsSection[selectedTabIndex]} /> : null}
+        {selectedTabIndex === 1 ? <FileUploadSection {...data.tabsSection[selectedTabIndex].details} /> : null}
+        {selectedTabIndex === 2 ? <FileUploadSection {...data.tabsSection[selectedTabIndex].details} /> : null}
+        {selectedTabIndex === 3 ? <ManualEntrySection {...data.tabsSection[selectedTabIndex]} /> : null}
+        {selectedTabIndex === 4 ? <EntryHistorySection {...data.tabsSection[selectedTabIndex]} /> : null}
       </div>
     </div>
   );

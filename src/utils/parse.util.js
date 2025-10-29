@@ -1,5 +1,5 @@
 import CSV from 'papaparse';
-import { getFileTemplate, validators } from './field-validators.util';
+import { getFileTemplate, fieldValidators } from './field-validators.util';
 
 export const parseJson = (string) => {
   try {
@@ -22,7 +22,7 @@ export const parseCSVFile = (file) => {
         const fileTemplate = getFileTemplate(results.meta.fields);
         const customErrors = results.data.reduce((errorList, result, rowIndex) => {
           Object.keys(result).forEach((key) => {
-            const { error } = validators[key](result[key]);
+            const { error } = fieldValidators?.[key]?.(result?.[key]) || { error: `Invalid field ${key}`};
             if (error) {
               errorList.push({ row: rowIndex, column: key, message: error });
             }

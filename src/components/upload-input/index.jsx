@@ -8,7 +8,7 @@ const UploadInput = (props) => {
       </p>
 
       {/* File Input */}
-      <label className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded cursor-pointer hover:bg-blue-700">
+      <label className="inline-flex items-center px-4 py-2 bg-[#007aff] text-white font-semibold rounded cursor-pointer">
         <span>Choose File</span>
         <input
           type="file"

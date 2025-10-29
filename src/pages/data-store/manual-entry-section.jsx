@@ -1,36 +1,38 @@
-import { useState } from "react";
 import { DollarSign, Plus } from "lucide-react";
-import Input from "../../components/input";
+import { useState } from "react";
 import Button from "../../components/button";
+import Input from "../../components/input";
+import { CATEGORIES, CLIENT_ID, POST_COST_URL } from "../../config/vars";
+import { fieldValidators } from "../../utils/field-validators.util";
+import { postResource } from "../../utils/http.util";
 
 const ManualEntrySection = () => {
   const [formData, setFormData] = useState({
-    vendor: "",
+    vendor: "AWS",
     subcategory: "",
-    category: "",
-    amount: "",
-    usageUnits: "",
-    tags: "",
-    project: "",
-    notes: "",
+    category: "GPT-4",
+    amount: 3000,
+    units: 100,
+    tags: "some tags",
+    project: "project A",
+    notes: "notes",
   });
-
-  const categories = [
-    "AI Model Costs",
-    "Infrastructure & Compute",
-    "Agent Platform Licenses",
-    "Talent Costs",
-    "Data & Integration",
-  ];
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const requestItem = Object.keys(formData).reduce((acc, key) => {
+      acc[key] = fieldValidators?.[key]?.(formData?.[key])?.value || {};
+      return acc;
+    }, {});
+    requestItem.date = (new Date()).getTime();
+    const requestBody = { client: CLIENT_ID, data: [requestItem] };
+    await postResource(POST_COST_URL, requestBody);
   };
 
   return (
@@ -75,7 +77,7 @@ const ManualEntrySection = () => {
             required
           >
             <option value="">Select category</option>
-            {categories.map((cat) => (
+            {CATEGORIES.map((cat) => (
               <option key={cat} value={cat}>
                 {cat}
               </option>
@@ -121,10 +123,10 @@ const ManualEntrySection = () => {
             Usage Units
           </label>
           <Input
-            type="text"
-            name="usageUnits"
+            type="number"
+            name="units"
             placeholder="e.g., 2.5M tokens, 850 hours"
-            value={formData.usageUnits}
+            value={formData.units}
             onChange={handleChange}
             className="w-full border border-[#e2e8f0] rounded px-3 py-2 focus:ring-2 focus:ring-blue-500"
           />
@@ -176,10 +178,10 @@ const ManualEntrySection = () => {
         </div>
 
         {/* Submit Button */}
-        <div className="col-span-2">
+        <div className="col-span-2 flex align-center justify-center">
           <Button
             type="submit"
-            className="w-full flex items-center justify-center gap-2 bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition text-xs"
+            className="flex items-center justify-center gap-2 bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition text-xs px-4"
           >
             <Plus size={18} /> Add Cost Entry
           </Button>
