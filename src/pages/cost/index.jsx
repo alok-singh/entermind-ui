@@ -5,10 +5,14 @@ import Button from '../../components/button';
 import Card from '../../components/card';
 import Tabs from '../../components/tabs';
 import data from '../../data/cost.json';
-import { setSelectedTabIndex } from '../../reducers/cost-reducer';
+import { setCostData, setSelectedTabIndex } from '../../reducers/cost-reducer';
 import CostOverviewSection from './cost-overview-section';
 import CostBreakdownSection from './cost-breakdown-section';
 import AnomalySection from './anomaly-section';
+import { getResource } from '../../utils/http.util';
+import { GET_COST_URL } from '../../config/vars';
+import { useEffect } from 'react';
+import { getCostBreakDown, getCostOverview, getMetricCardsData } from './cost.util';
 
 const MetricTopSection = (props) => {
   return (
@@ -45,7 +49,7 @@ const MetricCards = (props) => {
     <div className="grid gap-6 grid-cols-4 mb-6">
       {props.cards.map((card) => {
         return (
-          <Card className={card.cardClassName}>
+          <Card key={card.id} className={card.cardClassName}>
             <h3 className={card.titleClassName}>{card.title}</h3>
             <div className={card.valueClassName}>{card.value}</div>
             <p className={card.descriptionClassName}>{card.description}</p>
@@ -58,15 +62,24 @@ const MetricCards = (props) => {
 
 const CostExplorer = () => {
   const dispatch = useDispatch();
-  const { selectedTabIndex } = useSelector((state) => state.costPage.value);
+  const { selectedTabIndex, costData } = useSelector((state) => state.costPage.value);
+
+  useEffect(() => {
+    const innerFunction = async () => {
+      const result = await getResource(GET_COST_URL);
+      dispatch(setCostData(result?.response?.data));
+    };
+    innerFunction();
+  }, []);
+
   return (
     <div className="bg-[#f5f5f7] min-h-screen">
       <div className="max-w-[1400px] mx-auto p-8 bg-white">
         <MetricTopSection {...data.metricSection} />
-        <MetricCards cards={data.metricSection.cards} />
+        <MetricCards cards={getMetricCardsData(data, costData)} />
         <Tabs tabs={data.tabsSection} selectedTabIndex={selectedTabIndex} setSelectedTabIndex={(index) => dispatch(setSelectedTabIndex(index))} />
-        {selectedTabIndex === 0 ? <CostOverviewSection {...data.costOverview} /> : null}
-        {selectedTabIndex === 1 ? <CostBreakdownSection {...data.costBreakdown} /> : null}
+        {selectedTabIndex === 0 ? <CostOverviewSection {...getCostOverview(data.costOverview, costData)} /> : null}
+        {selectedTabIndex === 1 ? <CostBreakdownSection {...getCostBreakDown(data.costBreakdown, costData)} /> : null}
         {selectedTabIndex === 2 ? <AnomalySection {...data.anomalySection} /> : null}
       </div>
     </div>

@@ -31,10 +31,10 @@ const HeaderCards = (props) => {
     <div className="mt-[21px] mb-[21px] grid grid-cols-4 gap-4">
       {props.cards.map((item, index) => {
         return (
-          <Card className="border-[#eaeaea] border" key={`${item.title}-${index}`}>
+          <Card className="border-[#eaeaea] border" key={item.id}>
             <div className="flex items-center justify-between p-1">
               <div className="card-title">
-                <h3 className="text-[21px] font-semibold">{item.title}</h3>
+                <h3 className="text-[21px] font-semibold">{props.history.id === item.id ? props.history.count : item.title}</h3>
                 <div className="text-[#5c6370] text-[12.25px]">{item.description}</div>
               </div>
               {iconMap[item.icon](item.iconProps)}
@@ -62,7 +62,7 @@ const DataStorePage = () => {
     <div className="bg-[#f5f5f7] min-h-screen">
       <div className="max-w-[1400px] mx-auto p-8 bg-white">
         <PageHeader {...data.headerSection} />
-        <HeaderCards cards={data.headerSection.cards} />
+        <HeaderCards cards={data.headerSection.cards} history={{ count: history.uploadHistoryEntries.length, id: 'recent-entries' }} />
         <Tabs tabs={data.tabsSection} selectedTabIndex={selectedTabIndex} setSelectedTabIndex={(index) => dispatch(setSelectedTabIndex(index))} />
         {selectedTabIndex === 0 ? <TemplateSection {...data.tabsSection[selectedTabIndex]} /> : null}
         {selectedTabIndex === 1 ? <FileUploadSection {...data.tabsSection[selectedTabIndex].details} /> : null}

@@ -1,12 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getLocalStorageItem, setLocalStorageItem } from "../../utils/local-storage.util";
-import { LOGIN_KEY, SESSION_TIME } from "../../config/vars";
 
 const initialState = {
   value: {
     selectedTabIndex: 0,
+    costData: [],
     overview: {
-      isLoading: false
+      isLoading: false,
     },
     breakdown: {
       isLoading: false
@@ -30,8 +29,11 @@ const costSlice = createSlice({
     setSelectedTabIndex: (state, action) => {
       state.value.selectedTabIndex = action.payload;
     },
+    setCostData: (state, action) => {
+      state.value.costData = action.payload;
+    }
   }
 });
 
-export const { setSelectedTabIndex, setLoading } = costSlice.actions;
+export const { setSelectedTabIndex, setLoading, setCostData } = costSlice.actions;
 export default costSlice.reducer;

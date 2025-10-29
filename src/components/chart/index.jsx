@@ -4,7 +4,6 @@ import Card from "../card";
 import Badge from "../badge";
 
 const Chart = (props) => {
-  console.log(props.height, props.width);
   return (
     <Card className="bg-white border border-[#e2e8f0]">
       <div className="p-[7px]"></div>

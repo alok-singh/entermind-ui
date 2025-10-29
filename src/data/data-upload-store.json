@@ -4,6 +4,7 @@
     "sectionDescription": "Multiple ways to get your data into Integrity: Templates, Manual Entry, PDF Bills, or API Integrations",
     "cards": [
       {
+        "id": "recent-entries",
         "title": 0,
         "description": "Recent Entries",
         "iconProps": {
@@ -14,6 +15,7 @@
         "icon": "database"
       },
       {
+        "id": "active-integrations",
         "title": 0,
         "description": "Active Integrations",
         "iconProps": {
@@ -24,6 +26,7 @@
         "icon": "cloud"
       },
       {
+        "id": "templates-available",
         "title": 3,
         "description": "Templates Available",
         "iconProps": {
@@ -34,6 +37,7 @@
         "icon": "file"
       },
       {
+        "id": "input-methods",
         "title": 3,
         "description": "Input Methods",
         "iconProps": {

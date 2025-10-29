@@ -22,7 +22,7 @@ export const parseCSVFile = (file) => {
         const fileTemplate = getFileTemplate(results.meta.fields);
         const customErrors = results.data.reduce((errorList, result, rowIndex) => {
           Object.keys(result).forEach((key) => {
-            const { error } = fieldValidators?.[key]?.(result?.[key]) || { error: `Invalid field ${key}`};
+            const { error } = fieldValidators?.[key]?.(result?.[key]) || { error: `Invalid field ${key}` };
             if (error) {
               errorList.push({ row: rowIndex, column: key, message: error });
             }
@@ -41,3 +41,22 @@ export const parseCSVFile = (file) => {
     });
   });
 };
+
+export const convertNumberToString = (num) => {
+  if (num === null || num === undefined) return "NA";
+  if (num < 1000) return num.toString();
+
+  const units = [
+    { value: 1e9, suffix: "B" },
+    { value: 1e6, suffix: "M" },
+    { value: 1e3, suffix: "k" },
+  ];
+
+  for (let unit of units) {
+    if (num >= unit.value) {
+      const formatted = (num / unit.value).toFixed(2);
+      // Remove trailing zeros (e.g., 1.00 -> 1)
+      return `$${formatted.replace(/\.00$/, "").replace(/(\.\d)0$/, "$1")}${unit.suffix}`;
+    }
+  }
+}

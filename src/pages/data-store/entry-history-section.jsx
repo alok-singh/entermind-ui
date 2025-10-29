@@ -1,10 +1,10 @@
 import { Database, RefreshCw } from 'lucide-react';
-import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '../../components/button';
 import Card from '../../components/card';
 import Table from '../../components/table';
 import { setHistoryLoading, uploadHistory } from '../../reducers/data-page-reducer';
+import { fetchUploadHistory } from './data-store.util';
 
 const EntryHistorySection = () => {
   const dispatch = useDispatch();

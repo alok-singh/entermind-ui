@@ -3,26 +3,26 @@
     "sectionTitle": "Cost Intelligence",
     "sectionDescription": "AI-Powered Total Cost of Ownership Analysis",
     "badgeTitle": "Live Data Connected",
-    "cards": [
-      {
+    "cards": {
+      "total-annual-cost": {
         "title": "Total Annual Cost",
         "titleClassName": "text-xs text-[#5c6370]",
         "cardClassName": "text-card-foreground flex flex-col rounded-xl border bg-gradient-to-br from-[#0066ff]/10 to-transparent border-[#0066ff]/20",
-        "value": "$2.85M",
+        "value": "$2",
         "valueClassName": "text-2xl mt-[32px]",
         "description": "2.3% vs last month",
         "descriptionClassName": "text-[10.5px] text-[#5c6370] mt-2"
       },
-      {
+      "optimization-potential": {
         "title": "Optimization Potential",
         "titleClassName": "text-xs text-[#5c6370]",
-        "value": "$1.38M",
+        "value": "$1",
         "description": "48% total savings possible",
         "cardClassName": "text-card-foreground flex flex-col rounded-xl border bg-gradient-to-br from-[#00d68f]/10 to-transparent border-[#00d68f]/20",
         "valueClassName": "text-2xl text-[#00d68f] mt-[32px]",
         "descriptionClassName": "text-[10.5px] text-[#5c6370] mt-2"
       },
-      {
+      "active-anomalies": {
         "title": "Active Anomalies",
         "titleClassName": "text-xs text-[#5c6370]",
         "value": "1",
@@ -31,7 +31,7 @@
         "valueClassName": "text-2xl mt-[32px]",
         "descriptionClassName": "text-[10.5px] text-[#5c6370] mt-2"
       },
-      {
+      "ai-recommendations": {
         "title": "AI Recommendations",
         "titleClassName": "text-xs text-[#5c6370]",
         "value": "3",
@@ -40,7 +40,7 @@
         "valueClassName": "text-2xl mt-[32px]",
         "descriptionClassName": "text-[10.5px] text-[#5c6370] mt-2"
       }
-    ]
+    }
   },
   "tabsSection": [
     { "title": "TCO Overview" },
@@ -60,12 +60,12 @@
             "labels": ["AI", "Infrastructure", "Agent", "Talent", "Data"],
             "datasets": [
               {
+                "label": "Cost",
                 "data": [1250000, 420000, 390000, 550000, 350000]
               }
             ]
           },
           "options": {
-            "responsive": true,
             "plugins": {
               "legend": {
                 "position": "left"
