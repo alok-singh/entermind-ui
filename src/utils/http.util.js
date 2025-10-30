@@ -9,16 +9,29 @@ const generateHeaders = (headers) => {
 };
 
 const fetchResource = async (url, method, data, headers) => {
-  const fetchHeaders = generateHeaders(headers);
-  const urlResponse = await fetch(url, {
-    method: method,
-    headers: fetchHeaders,
-    ...(data ? { body: JSON.stringify(data) } : {})
-  });
-
-  const parsed = await urlResponse.json();
-  showAPIResponseToastMessage(parsed);
-  return parsed;
+  try {
+    const fetchHeaders = generateHeaders(headers);
+    const urlResponse = await fetch(url, {
+      method: method,
+      headers: fetchHeaders,
+      ...(data ? { body: JSON.stringify(data) } : {})
+    });
+  
+    const result = await urlResponse.json();
+    showAPIResponseToastMessage(result);
+    return result;
+  } catch(error) {
+    const result = {
+      response: {
+        errors: [{
+          errorTitle: error.message,
+          errorDescription: error.toString()
+        }]
+      }
+    }
+    showAPIResponseToastMessage(result);
+    return result;
+  }
 };
 
 export const getResource = async (url, headers = GENERIC_HEADERS) => {

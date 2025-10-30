@@ -13,8 +13,11 @@ import {
   Brain,
   Cpu,
   Users,
-  Layers
-} from "lucide-react";
+  Layers,
+  RefreshCcw,
+  Download,
+  Activity
+} from 'lucide-react';
 
 const iconMap = {
   database: (props) => <Database {...props} />,
@@ -31,7 +34,10 @@ const iconMap = {
   brain: (props) => <Brain {...props} />,
   cpu: (props) => <Cpu {...props} />,
   users: (props) => <Users {...props} />,
-  layers: (props) => <Layers {...props} />
+  layers: (props) => <Layers {...props} />,
+  refresh: (props) => <RefreshCcw {...props} />,
+  download: (props) => <Download {...props} />,
+  activity: (props) => <Activity {...props} />
 };
 
 export default iconMap;

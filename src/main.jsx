@@ -17,6 +17,8 @@ import { LOGIN_KEY } from './config/vars';
 import CostExplorer from './pages/cost';
 import { getLocalStorageItem } from './utils/local-storage.util';
 import './index.css';
+import RoiPage from './pages/roi/index.jsx';
+import InsightsPage from './pages/insights/index.jsx';
 
 const store = configureStore({
   reducer: {
@@ -59,6 +61,8 @@ const App = () => {
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/cost" element={<CostExplorer />} />
             <Route path="/data" element={<DataStorePage />} />
+            <Route path="/roi" element={<RoiPage />} />
+            <Route path="/insights" element={<InsightsPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

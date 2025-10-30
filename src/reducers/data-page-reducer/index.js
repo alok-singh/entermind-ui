@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { TEMPLATES } from "../../config/vars";
 
 const initialState = {
   value: {
@@ -15,6 +16,21 @@ const initialState = {
       totalRows: 0,
       validRows: 0,
       template: ''
+    },
+    manualEntry: {
+      isLoading: false,
+      template: Object.keys(TEMPLATES)[0],
+      formData: Object.keys(TEMPLATES).reduce((acc, template) => {
+        const mapTemplate = TEMPLATES[template];
+        acc[template] = mapTemplate.FIELDS.reduce((form, field, index) => {
+          const fieldType = mapTemplate.TYPES[index];
+          return {
+            ...form,
+            [field]: fieldType === 'number' ? 0 : fieldType === 'date' ? new Date().getTime() : ''
+          };
+        }, {});
+        return acc;
+      }, {})
     }
   }
 };
@@ -35,6 +51,18 @@ const dataPageSlice = createSlice({
 
     setUploadLoading: (state, action) => {
       state.value.uploadCSV.isLoading = action.payload;
+    },
+
+    setManualEntryLoading: (state, action) => {
+      state.value.manualEntry.isLoading = action.payload;
+    },
+
+    setManualEntryTemplate: (state, action) => {
+      state.value.manualEntry.template = action.payload;
+    },
+
+    setManualEntryFormData: (state, action) => {
+      state.value.manualEntry.formData[state.value.manualEntry.template][action.payload.name] = action.payload.value;
     },
 
     setUploadData: (state, action) => {
@@ -63,6 +91,15 @@ const dataPageSlice = createSlice({
   }
 });
 
+export const {
+  uploadHistory,
+  setHistoryLoading,
+  setSelectedTabIndex,
+  setUploadData,
+  setUploadLoading,
+  setManualEntryTemplate,
+  setManualEntryFormData,
+  setManualEntryLoading
+} = dataPageSlice.actions;
 
-export const { uploadHistory, setHistoryLoading, setSelectedTabIndex, setUploadData, setUploadLoading } = dataPageSlice.actions;
 export default dataPageSlice.reducer;

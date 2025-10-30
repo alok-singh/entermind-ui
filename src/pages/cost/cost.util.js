@@ -1,3 +1,4 @@
+import { CATEGORIES, CATEGORIES_ICONS } from "../../config/vars";
 import { deepClone } from "../../utils/helper.util";
 import { convertNumberToString } from "../../utils/parse.util";
 
@@ -10,7 +11,6 @@ const colors = [
   // "#ff9f40", // orange
   // "#b66aae", // pink
   // "#ff6385", // red
-
   '#FFAF6EF1',
   '#7D8BE0F1',
   '#9A81B0F1',
@@ -25,12 +25,43 @@ const colors = [
 
 const calculateTotalCost = (data) => {
   const sum = data?.reduce?.((sum, item) => sum + item.amount, 0);
-  return convertNumberToString(sum);
+  return sum;
 }
+
+const groupByOnKey = (array, key) => {
+  return array.reduce((acc, item) => {
+    acc[item[key]] = acc[item[key]] ? acc[item[key]] : [];
+    acc[item[key]].push(item);
+    return acc;
+  }, {});
+}
+
+
+const checkArrayTrend = (arr, key) => {
+  if (!Array.isArray(arr) || arr.length < 2) {
+    return "stable"; // Single element or invalid input treated as stable
+  }
+
+  let isIncreasing = true;
+  let isDecreasing = true;
+
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i][key] > arr[i - 1][key]) {
+      isDecreasing = false;
+    } else if (arr[i][key] < arr[i - 1][key]) {
+      isIncreasing = false;
+    }
+  }
+
+  if (isIncreasing && !isDecreasing) return "increasing";
+  if (!isIncreasing && isDecreasing) return "decreasing";
+  return "stable";
+}
+
 
 export const getMetricCardsData = (data, costData) => {
   const cards = deepClone(data.metricSection.cards);
-  cards['total-annual-cost'].value = calculateTotalCost(costData);
+  cards['total-annual-cost'].value = convertNumberToString(calculateTotalCost(costData));
   return Object.values(cards);
 };
 
@@ -43,11 +74,10 @@ export const getCostOverview = (data, costData) => {
   }, {});
 
   const labels = Object.keys(costMap);
-  const shortLabels = labels.map(item => item.split(' ').shift());
   costOverview.chartSection.chartList.forEach((chart, index) => {
-    chart.data.labels = labels.length ? (index === 0 ? labels : shortLabels) : chart.data.labels;
+    chart.data.labels = labels.length ? labels : chart.data.labels;
     chart.data.datasets[0].data = labels.length ? Object.values(costMap) : chart.data.datasets[0].data;
-    if (index === 0) {
+    if (labels.length) {
       chart.data.datasets[0].backgroundColor = colors.slice(0, labels.length)
     }
   });
@@ -56,27 +86,27 @@ export const getCostOverview = (data, costData) => {
 }
 
 export const getCostBreakDown = (data, costData) => {
+  const totalCost = calculateTotalCost(costData);
   const breakdown = deepClone(data);
-  const categoryMap = costData.reduce((acc, item) => {
-    acc[item.category] = acc[item.category] ? acc[item.category] : []
-    acc[item.category].push(item);
-    return acc;
-  }, {});
+  const categoryMap = groupByOnKey(costData, 'category');
 
   const additionalItem = Object.keys(categoryMap).map(item => {
     const sum = calculateTotalCost(categoryMap[item]);
+    const randomPercent = Math.random();
+    const iconIndex = CATEGORIES.findIndex(category => category === item);
+    const subcategoryMap = groupByOnKey(categoryMap[item], 'subcategory');
     return {
-      icon: "brain",
-      iconProps: { "className": "text-blue-500" },
+      icon: CATEGORIES_ICONS[iconIndex === -1 ? 0 : iconIndex],
+      iconProps: { className: 'text-[#06f] w-8 h-8 p-2 rounded-lg bg-[linear-gradient(to_right_bottom,#0066ff33_0%,#00d68f33_100%)]' },
       textLeftTop: item,
-      textLeftBottom: `${sum} annually • 44% of total`,
-      textRightTop: "$746K savings",
-      textRightBottom: "60% reduction possible",
-      details: categoryMap[item].map(detail => {
+      textLeftBottom: `${convertNumberToString(sum)} annually • ${(100 * sum / totalCost).toFixed(2)}% of total`,
+      textRightTop: `${convertNumberToString((sum * randomPercent).toFixed(2))} savings`,
+      textRightBottom: `${(randomPercent * 100).toFixed(2)}% reduction possible`,
+      details: Object.keys(subcategoryMap).map(subcategory => {
         return {
-          name: detail.subcategory,
-          status: "increasing",
-          amount: convertNumberToString(detail.amount)
+          name: subcategory,
+          status: checkArrayTrend(subcategoryMap[subcategory], 'subcategory'),
+          amount: convertNumberToString(calculateTotalCost(subcategoryMap[subcategory]))
         }
       })
     }

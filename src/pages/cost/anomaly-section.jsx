@@ -8,6 +8,7 @@ const AlertCard = (props) => {
     severity,
     detectedAt,
     description,
+    subDescription,
     normalValue,
     currentValue,
     impact,
@@ -24,14 +25,14 @@ const AlertCard = (props) => {
       {/* Header */}
       <div className="flex justify-between items-center mb-2">
         <div className="flex items-center gap-2">
-          <AlertTriangle className="text-red-600" />
-          <h2 className="text-lg font-semibold text-gray-800">{title}</h2>
+          <AlertTriangle color="#f36" width="17.5px" height="17.5px" />
+          <h2 className="text-sm font-semibold text-gray-800">{title}</h2>
         </div>
         <span
           className={`text-xs font-semibold px-2 py-1 rounded ${
             severity === "high"
-              ? "bg-red-500 text-white"
-              : "bg-blue-500 text-white"
+              ? "bg-[#f36] text-white"
+              : "bg-[#06f] text-white"
           }`}
         >
           {severity}
@@ -39,32 +40,33 @@ const AlertCard = (props) => {
       </div>
 
       {/* Detected Time */}
-      <p className="text-sm text-gray-600 mb-3">Detected {detectedAt}</p>
+      <p className="text-xs text-gray-600 mb-6">Detected {detectedAt}</p>
 
       {/* Description */}
-      <p className="text-gray-700 mb-4">{description}</p>
+      <p className="text-xs mb-2">{description}</p>
+      <p className="text-xs text-gray-600 mb-2">{subDescription}</p>
 
       {/* Values */}
-      <div className="grid grid-cols-2 gap-4 mb-4 bg-white rounded p-3">
+      <div className="grid grid-cols-2 gap-4 my-4 bg-white rounded p-3">
         <div>
           <p className="text-xs text-gray-500">Normal Value</p>
-          <p className="text-gray-700 font-medium">{normalValue}</p>
+          <p className="text-xs font-medium mt-2">{normalValue}</p>
         </div>
         <div>
           <p className="text-xs text-gray-500">Current Value</p>
-          <p className="text-red-600 font-medium">{currentValue}</p>
+          <p className="text-red-600 text-xs font-medium mt-2">{currentValue}</p>
         </div>
       </div>
 
       {/* Impact */}
       <div className="flex items-center gap-2 mb-4 bg-white rounded p-3">
-        <DollarSign className="text-gray-500" />
-        <p className="text-gray-700 font-medium">{impact}</p>
+        <DollarSign width="14px" height="14px" className="text-gray-500" />
+        <p className="text-gray-700 font-medium text-xs">{impact}</p>
       </div>
 
       <div className="flex items-center justify-between">
         {/* Recommendation */}
-        <p className="text-sm text-gray-600">
+        <p className="text-xs text-gray-600">
           Recommended action:{" "}
           <span className="font-semibold">{recommendation}</span>
         </p>
@@ -72,19 +74,13 @@ const AlertCard = (props) => {
         {/* Acknowledge Button */}
         <Button
           onClick={() => setAcknowledged(true)}
-          className={`flex items-center gap-2 px-4 py-2 rounded font-medium transition ${
+          className={`flex items-center gap-2 px-4 py-1 rounded font-medium transition text-xs ${
             acknowledged
-              ? "bg-green-100 text-green-700 border border-green-500"
-              : "bg-blue-600 text-white hover:bg-blue-700"
+              ? "bg-transparent text-[#00d68f] border border-[#00d68f]"
+              : "bg-[#06f] text-white"
           }`}
         >
-          {acknowledged ? (
-            <>
-              <CheckCircle size={18} /> Acknowledged
-            </>
-          ) : (
-            "Acknowledge"
-          )}
+          {acknowledged ? "Acknowledged" : (<><CheckCircle size={14} /> Acknowledge</>)}
         </Button>
 
       </div>

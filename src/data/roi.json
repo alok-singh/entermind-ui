@@ -1,0 +1,63 @@
+{
+  "metricSection": {
+    "sectionTitle": "ROI Performance",
+    "sectionDescription": "Value driver decomposition & realized returns • Last updated: 10/30/2025",
+    "buttons": [
+      {
+        "className": "w-full flex items-center gap-[5px] border border-[#e2e8f0] px-2 py-1 text-[12px] rounded-[7px] hover:bg-[#00d68f] hover:text-white",
+        "text": "Refresh",
+        "icon": "refresh",
+        "iconProps": { "width": "14px", "height": "14px" }
+      }
+    ],
+    "cards": {
+      "current-roi": {
+        "title": "Total Annual Cost",
+        "titleClassName": "text-xs text-[#5c6370]",
+        "cardClassName": "text-card-foreground flex flex-col rounded-xl border bg-gradient-to-br from-[#00d68f]/10 to-transparent border-[#00d68f]/20",
+        "value": "412%",
+        "valueClassName": "text-2xl mt-[32px]",
+        "description": "Target: 565%",
+        "descriptionClassName": "text-[10.5px] text-[#5c6370] mt-2"
+      },
+      "realized-value": {
+        "title": "Realized Value",
+        "titleClassName": "text-xs text-[#5c6370]",
+        "value": "$14.58M",
+        "description": "43% of total",
+        "cardClassName": "text-card-foreground flex flex-col rounded-xl border bg-gradient-to-br from-[#0066ff]/10 to-transparent border-[#0066ff]/20",
+        "valueClassName": "text-2xl text-[#00d68f] mt-[32px]",
+        "descriptionClassName": "text-[10.5px] text-[#5c6370] mt-2"
+      },
+      "active-anomalies": {
+        "title": "Projected Value",
+        "titleClassName": "text-xs text-[#5c6370]",
+        "value": "$18.96M",
+        "description": "Forecasted additional value",
+        "cardClassName": "text-card-foreground flex flex-col rounded-xl border bg-gradient-to-br from-purple-500/10 to-transparent border-purple-500/20",
+        "valueClassName": "text-2xl mt-[32px]",
+        "descriptionClassName": "text-[10.5px] text-[#5c6370] mt-2"
+      },
+      "ai-recommendations": {
+        "title": "Total Investment",
+        "titleClassName": "text-xs text-[#5c6370]",
+        "value": "$2.85M",
+        "description": "AI program costs",
+        "cardClassName": "text-card-foreground flex flex-col rounded-xl border bg-gradient-to-br from-orange-500/10 to-transparent border-orange-500/20",
+        "valueClassName": "text-2xl mt-[32px]",
+        "descriptionClassName": "text-[10.5px] text-[#5c6370] mt-2"
+      }
+    }
+  },
+  "roiStatusSection": {
+    "title": "ROI Status",
+    "statusText": "At Risk",
+    "statusColor": "[#f54a00]",
+    "progressLabel": "Progress to Target",
+    "currentValue": "412%",
+    "targetValue": "565%",
+    "progressPercent": 73,
+    "progressColor": "bg-[#f54a00]",
+    "description": "Below target. Review value drivers and implement quick wins."
+  }
+}

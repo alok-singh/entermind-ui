@@ -6,4 +6,12 @@
 
 body {
   color: rgb(15, 20, 25);
+  --var-green-color: #00d68f;
+  --var-blue-color: #06f;
+  --var-red-color: #f36;
+  --var-border-color: #e2e8f0;
+  --var-text-color: #0f1419;
+  --var-light-text-color: #5c6370;
+  --var-orange-color: #f54a00;
+  ---var-orange-background: #fff8ec;
 }

@@ -1,8 +1,30 @@
 {
   "metricSection": {
+    "icon": "dollar",
+    "iconProps": { "height": "21px", "width": "21px", "color": "#06f" },
     "sectionTitle": "Cost Intelligence",
     "sectionDescription": "AI-Powered Total Cost of Ownership Analysis",
     "badgeTitle": "Live Data Connected",
+    "badgeIcon": "activity",
+    "badgeIconProps": {
+      "color": "#00d68f",
+      "height": "10.5px",
+      "width": "10.5px"
+    },
+    "buttons": [
+      {
+        "className": "w-full flex items-center gap-[5px] border border-[#e2e8f0] px-2 py-1 text-[12px] rounded-[7px] hover:bg-[#00d68f] hover:text-white",
+        "text": "Refresh",
+        "icon": "refresh",
+        "iconProps": { "width": "14px", "height": "14px" }
+      },
+      {
+        "className": "w-full flex items-center gap-[5px] border border-[#e2e8f0] px-2 py-1 text-[12px] rounded-[7px] hover:bg-[#00d68f] hover:text-white",
+        "text": "Export",
+        "icon": "download",
+        "iconProps": { "width": "14px", "height": "14px" }
+      }
+    ],
     "cards": {
       "total-annual-cost": {
         "title": "Total Annual Cost",
@@ -42,12 +64,7 @@
       }
     }
   },
-  "tabsSection": [
-    { "title": "TCO Overview" },
-    { "title": "Category Breakdown" },
-    { "title": "Anomalies" },
-    { "title": "AI Recommendations" }
-  ],
+  "tabsSection": [{ "title": "TCO Overview" }, { "title": "Category Breakdown" }, { "title": "Anomalies" }, { "title": "AI Recommendations" }],
   "costOverview": {
     "chartSection": {
       "chartList": [
@@ -269,6 +286,55 @@
         "currentValue": "78 % cache misses",
         "impact": "+$4.8K projected monthly overspend",
         "recommendation": "Recommended action: Restore 7-day TTL policy"
+      }
+    ]
+  },
+  "recommendationSection": {
+    "recommendations": [
+      {
+        "tags": ["Priority 1", "Quick Win"],
+        "status": "pending",
+        "title": "Implement Smart Model Routing (65% GPT-4 → GPT-4o)",
+        "description": "AI detected 65% of GPT-4 calls have complexity scores <0.6, suitable for GPT-4o with 50% cost savings.",
+        "annualSavings": "$345K",
+        "npv": "$925K",
+        "paybackPeriod": "0.2 months",
+        "confidence": "96%",
+        "duration": "2 days",
+        "cost": "$15K cost",
+        "effort": "Low effort",
+        "primaryColor": "blue-500",
+        "secondaryColor": "gray-800"
+      },
+      {
+        "tags": ["Priority 2", "Big bet"],
+        "status": "pending",
+        "title": "Deploy Semantic Caching (42% Redundancy Elimination)",
+        "description": "Pattern analysis shows 42% of embedding requests are duplicates within 7-day windows.",
+        "annualSavings": "$221K",
+        "npv": "$585K",
+        "paybackPeriod": "1.2 months",
+        "confidence": "93%",
+        "duration": "5 days",
+        "cost": "$45K cost",
+        "effort": "Medium effort",
+        "primaryColor": "blue-500",
+        "secondaryColor": "gray-800"
+      },
+      {
+        "tags": ["Priority 3", "Quick Win"],
+        "status": "in-progress",
+        "title": "Prompt Template Optimization (28% Token Reduction)",
+        "description": "AI analyzed 125K prompts and identified verbose patterns. Optimized templates maintain 99.2% quality.",
+        "annualSavings": "$180K",
+        "npv": "$475K",
+        "paybackPeriod": "0.8 months",
+        "confidence": "97%",
+        "duration": "3 days",
+        "cost": "$22K cost",
+        "effort": "Low effort",
+        "primaryColor": "blue-500",
+        "secondaryColor": "gray-800"
       }
     ]
   }
