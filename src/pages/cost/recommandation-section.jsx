@@ -16,7 +16,6 @@ const Recommendation = (props) => {
     duration,
     cost,
     effort,
-    primaryColor = '#06f',
     secondaryColor = 'gray-700',
     onStart,
     onReject
@@ -26,7 +25,7 @@ const Recommendation = (props) => {
     <Card className="border border-red-300 rounded-lg p-4 mt-4 bg-white shadow-sm">
       {/* Header */}
       <div className="flex items-start gap-2 mb-4">
-        <Lightbulb className={`text-${primaryColor} bg-linear-to-br from-[#0066ff]/20 to-[#00d68f]/20 rounded-lg p-1.5`} size={28} />
+        <Lightbulb className={`text-[#06f] bg-linear-to-br from-[#0066ff]/20 to-[#00d68f]/20 rounded-lg p-1.5`} size={28} />
         <div>
           <div className="flex flex-wrap gap-2">
             {tags.map((tag, idx) => (
@@ -73,7 +72,7 @@ const Recommendation = (props) => {
 
       {/* Actions */}
       <div className="flex gap-3">
-        <Button onClick={onStart} className={`bg-${primaryColor} text-white px-3 text-xs py-2 rounded flex items-center gap-2`}>
+        <Button onClick={onStart} className={`bg-[#06f] text-white px-3 text-xs py-2 rounded flex items-center gap-2`}>
           <Play size={16} /> Start Implementation
         </Button>
         <Button onClick={onReject} className="bg-white text-gray-700 px-3 text-xs py-2 rounded border border-[#e2e8f0]">
@@ -85,6 +84,9 @@ const Recommendation = (props) => {
 };
 
 const RecommendationSection = (props) => {
+  const handleClickImplement = () => {
+    
+  };
   return (
     <div className="mt-6">
       {props.recommendations.map((recommendation) => {

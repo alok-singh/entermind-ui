@@ -1,3 +1,1 @@
-date,platform,metric_type,quantity,unit_cost,total_cost,agent_or_project,environment
-1/15/25,OpenAI GPT-4,Tokens,2500000,0.0012,3000,Moana (Business),Production
-1/15/25,AWS Lambda,Compute Hours,850,0.2,170,Backend Services,Production
+industry,systemName,functionName,model,version,region,usageType,metric,dailyAvg,monthlyTotal,unitCost,monthlyCost,linkedCostId,linkedRoiId,humanHours,autoResolution,errorRate,downtime,owner,department,notes

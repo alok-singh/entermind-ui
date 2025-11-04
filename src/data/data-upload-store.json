@@ -77,7 +77,8 @@
             "height": "21px",
             "color": "#06f"
           },
-          "downloadFileLink": "/cost-entry-template.csv"
+          "downloadFileTemplate": "/cost-entry-template.csv",
+          "downloadFileSample": "/cost-entry-sample.csv"
         },
         {
           "title": "ROI & Value Realization Template",
@@ -94,7 +95,8 @@
             "height": "21px",
             "color": "#00d68f"
           },
-          "downloadFileLink": "/roi-entry-template.csv"
+          "downloadFileTemplate": "/roi-entry-template.csv",
+          "downloadFileSample": "/roi-entry-sample.csv"
         },
         {
           "title": "Usage & Consumption Template",
@@ -111,7 +113,8 @@
             "height": "21px",
             "color": "#06f"
           },
-          "downloadFileLink": "/usage-tracking-template.csv"
+          "downloadFileTemplate": "/usage-tracking-template.csv",
+          "downloadFileSample": "/usage-tracking-sample.csv"
         }
       ],
       "guideSection": {
@@ -145,6 +148,7 @@
       "iconProps": { "width": "14px", "height": "14px" },
       "details": {
         "title": "Upload CSV/XLS File",
+        "inputTypeAccept": ".csv,.xls,.xlsx",
         "description": "Bulk import cost entries, ROI data, or usage metrics from your filled template",
         "icon": "upload",
         "iconProps": { "className": "mx-auto h-12 w-12 text-gray-400" },
@@ -159,8 +163,21 @@
         "title": "PDF Bill Processing",
         "description": "Upload PDF bills from vendors without API access. We'll extract the data automatically using OCR.",
         "icon": "fileText",
+        "inputTypeAccept": ".pdf",
         "iconProps": { "className": "mx-auto h-12 w-12 text-gray-400" },
-        "uploadBoxTitle": "Drop your PDF bill here"
+        "uploadBoxTitle": "Drop your PDF bill here",
+        "infoSection": {
+          "supportedVendors": "OpenAI, Anthropic, AWS, Azure, GCP, and most cloud providers. Upload clear, text-based PDFs for best results."
+        },
+        "howItWorksInfo": {
+          "title": "How it works:",
+          "steps": [
+            "Upload your vendor PDF bill (OpenAI, Anthropic, AWS, etc.)",
+            "Our OCR engine extracts vendor, date, amounts, and line items",
+            "Review the extracted data in the manual entry form",
+            "Make any corrections and save to your cost tracker"
+          ]
+        }
       }
     },
     {

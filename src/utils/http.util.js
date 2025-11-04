@@ -16,11 +16,11 @@ const fetchResource = async (url, method, data, headers) => {
       headers: fetchHeaders,
       ...(data ? { body: JSON.stringify(data) } : {})
     });
-  
+
     const result = await urlResponse.json();
     showAPIResponseToastMessage(result);
     return result;
-  } catch(error) {
+  } catch (error) {
     const result = {
       response: {
         errors: [{
@@ -33,6 +33,36 @@ const fetchResource = async (url, method, data, headers) => {
     return result;
   }
 };
+
+export const uploadPdf = async (url, files, fileType) => {
+  try {
+    const formData = new FormData();
+    files.forEach((file, index) => {
+      formData.append(`file-${index}`, file);
+    })
+
+    const response = await fetch(`${url}&fileType=${fileType}`, {
+      method: "POST",
+      body: formData
+    });
+
+    const result = await response.json();
+    showAPIResponseToastMessage(result);
+    return result;
+  } catch (error) {
+    const result = {
+      response: {
+        errors: [{
+          errorTitle: error.message,
+          errorDescription: error.toString()
+        }]
+      }
+    }
+    showAPIResponseToastMessage(result);
+    return result;
+  }
+};
+
 
 export const getResource = async (url, headers = GENERIC_HEADERS) => {
   return fetchResource(url, 'GET', null, headers);

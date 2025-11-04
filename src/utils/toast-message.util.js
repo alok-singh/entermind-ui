@@ -9,7 +9,7 @@ export const showAPIResponseToastMessage = (result) => {
     });
   } else {
     toast.success(result.responseMessage, {
-      description: result?.response?.message || ""
+      description: result?.response?.message || "Successfully fetched data"
     });
   }
 }

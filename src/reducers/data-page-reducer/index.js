@@ -17,6 +17,11 @@ const initialState = {
       validRows: 0,
       template: ''
     },
+    uploadPDF: {
+      fileName: '',
+      isLoading: false,
+      uploadData: []
+    },
     manualEntry: {
       isLoading: false,
       template: Object.keys(TEMPLATES)[0],
@@ -49,10 +54,6 @@ const dataPageSlice = createSlice({
       state.value.history.uploadHistoryEntries = action.payload;
     },
 
-    setUploadLoading: (state, action) => {
-      state.value.uploadCSV.isLoading = action.payload;
-    },
-
     setManualEntryLoading: (state, action) => {
       state.value.manualEntry.isLoading = action.payload;
     },
@@ -65,7 +66,11 @@ const dataPageSlice = createSlice({
       state.value.manualEntry.formData[state.value.manualEntry.template][action.payload.name] = action.payload.value;
     },
 
-    setUploadData: (state, action) => {
+    setUploadCSVLoading: (state, action) => {
+      state.value.uploadCSV.isLoading = action.payload;
+    },
+
+    setUploadCSVData: (state, action) => {
       const { fileName, results } = action.payload;
 
       const errorsMap = results?.errors?.reduce((acc, item) => {
@@ -87,6 +92,16 @@ const dataPageSlice = createSlice({
         columns: Object.keys(results?.data?.[0] || {}),
         rows: results.data.map(item => Object.values(item))
       }
+    },
+
+    setUploadPDFLoading: (state, action) => {
+      state.value.uploadPDF.isLoading = action.payload;
+    },
+
+    setUploadPDFData: (state, action) => {
+      const { fileName, uploadData } = action.payload;
+      state.value.uploadPDF.fileName = fileName;
+      state.value.uploadPDF.uploadData = uploadData;
     }
   }
 });
@@ -95,8 +110,10 @@ export const {
   uploadHistory,
   setHistoryLoading,
   setSelectedTabIndex,
-  setUploadData,
-  setUploadLoading,
+  setUploadCSVLoading,
+  setUploadCSVData,
+  setUploadPDFLoading,
+  setUploadPDFData,
   setManualEntryTemplate,
   setManualEntryFormData,
   setManualEntryLoading

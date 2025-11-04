@@ -1,4 +1,3 @@
-import { Activity } from 'lucide-react';
 import iconMap from '../../icons/lucid-icons';
 import Button from '../button';
 

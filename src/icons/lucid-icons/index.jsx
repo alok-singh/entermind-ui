@@ -16,7 +16,10 @@ import {
   Layers,
   RefreshCcw,
   Download,
-  Activity
+  Activity,
+  AlertTriangle,
+  GlobeLock,
+  Webhook
 } from 'lucide-react';
 
 const iconMap = {
@@ -37,7 +40,10 @@ const iconMap = {
   layers: (props) => <Layers {...props} />,
   refresh: (props) => <RefreshCcw {...props} />,
   download: (props) => <Download {...props} />,
-  activity: (props) => <Activity {...props} />
+  activity: (props) => <Activity {...props} />,
+  alertTriangle: (props) => <AlertTriangle {...props} />,
+  network: (props) => <GlobeLock {...props} />,
+  webhook: (props) => <Webhook {...props} />
 };
 
 export default iconMap;

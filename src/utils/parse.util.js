@@ -1,5 +1,6 @@
 import CSV from 'papaparse';
 import { getFileTemplate, fieldValidators } from './field-validators.util';
+import { ALLOW_UNKNOWN_PARAMS } from '../config/vars';
 
 export const parseJson = (string) => {
   try {
@@ -65,7 +66,7 @@ export const parseCSVFile = (file) => {
         const fileTemplate = getFileTemplate(results.meta.fields);
         const customErrors = results.data.reduce((errorList, result, rowIndex) => {
           Object.keys(result).forEach((key) => {
-            const { error } = fieldValidators?.[key]?.(result?.[key]) || { error: `Invalid field ${key}` };
+            const { error } = fieldValidators?.[key]?.(result?.[key]) || { isValid: ALLOW_UNKNOWN_PARAMS, error: ALLOW_UNKNOWN_PARAMS ? false : `Invalid field ${key}` };
             if (error) {
               errorList.push({ row: rowIndex, column: key, message: error });
             }
@@ -87,7 +88,7 @@ export const parseCSVFile = (file) => {
 
 export const convertNumberToString = (num) => {
   if (num === null || num === undefined) return 'NA';
-  if (num < 1000) return `$${num.toString()}`;
+  if (num < 1000) return `$${Number(num).toFixed(2)}`;
 
   const units = [
     { value: 1e9, suffix: 'B' },

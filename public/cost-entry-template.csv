@@ -1,6 +1,1 @@
-date,vendor,category,subcategory,amount,units,project,tags,notes
-"# ""Transaction or billing date""",Provider or vendor name,Primary cost category,Specific service or cost type,Cost amount in USD,"Usage units (tokens, hours, API calls)",Project or department allocation,Comma-separated tags for filtering,Additional context or comments
-"# ""2025-01-15""",OpenAI,AI Model Costs,GPT-4 API Calls,1250.5,1500000 tokens,Customer Service AI,"production,Q1-2025,high-priority",Increased usage due to product launch
-1/15/25,OpenAI,AI Model Costs,GPT-4 API Calls,2450.75,2500000 tokens,Customer Service AI,"production,Q1-2025",Monthly API usage
-1/15/25,Anthropic,AI Model Costs,Claude 3.5 Sonnet,1850,1800000 tokens,Document Processing,"production,Q1-2025",
-1/20/25,AWS,Infrastructure & Compute,Lambda Functions,850.25,5000000 requests,Backend Services,"infrastructure,Q1-2025",Agent orchestration compute
+industry,category,subcategory,description,costType,vendor,department,modelService,cloudRegion,environment,usageUnit,quantity,unitCost,monthlyCost,annualizedCost,billingAccount,contractId,startDate,endDate,owner,tags,notes

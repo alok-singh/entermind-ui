@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import Button from '../../components/button';
 import CalendarInput from '../../components/calendar-input';
 import Input from '../../components/input';
-import { CATEGORIES, CLIENT_ID, POST_COST_URL, TEMPLATES } from '../../config/vars';
-import { setManualEntryFormData, setManualEntryTemplate, setManualEntryLoading } from '../../reducers/data-page-reducer';
+import { CLIENT_ID, TEMPLATES } from '../../config/vars';
+import { setManualEntryFormData, setManualEntryLoading, setManualEntryTemplate } from '../../reducers/data-page-reducer';
 import { fieldValidators } from '../../utils/field-validators.util';
 import { postResource } from '../../utils/http.util';
 import { removeEmpty } from '../../utils/parse.util';
@@ -17,36 +17,12 @@ const RenderField = (props) => {
           {props.placeholder}
         </label>
         <CalendarInput
-          inputClassName="w-full border border-[#e2e8f0] rounded px-3 py-2 focus:ring-2 focus:ring-blue-500"
+          inputClassName="w-full border p-4 border-[#e2e8f0] rounded px-3 py-2 focus:ring-2 focus:ring-blue-500"
           value={props.value}
           onChange={(value) => {
             props.handleChange({ name: 'date', value });
           }}
         />
-      </div>
-    );
-  }
-
-  if (props.field === 'category') {
-    return (
-      <div className="col-span-1">
-        <label className="block text-xs font-medium text-gray-700 mb-1">
-          {props.label} {props.required ? '*' : ''}
-        </label>
-        <select
-          name="category"
-          value={props.value}
-          onChange={({ target }) => props.handleChange({ name: props.field, value: target.value })}
-          className="w-full border border-[#e2e8f0] rounded-[11px] px-2 py-2 focus:ring-2 focus:ring-blue-500 text-[12px]"
-          required
-        >
-          <option value="">Select category</option>
-          {CATEGORIES.map((cat) => (
-            <option key={cat} value={cat}>
-              {cat}
-            </option>
-          ))}
-        </select>
       </div>
     );
   }
@@ -155,6 +131,7 @@ const ManualEntrySection = () => {
           fields.map((field, index) => {
             return (
               <RenderField
+                key={`${template}-${field}-${index}`}
                 type={fieldTypes[index]}
                 field={field}
                 required={mandatory[index]}

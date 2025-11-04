@@ -1,42 +1,25 @@
-import React, { useState } from "react";
-import { AlertTriangle, DollarSign, CheckCircle } from "lucide-react";
-import Button from "../../components/button";
+import React, { useState } from 'react';
+import { DollarSign, CheckCircle } from 'lucide-react';
+import Button from '../../components/button';
+import iconsMap from '../../icons/lucid-icons';
 
 const AlertCard = (props) => {
-  const {
-    title,
-    severity,
-    detectedAt,
-    description,
-    subDescription,
-    normalValue,
-    currentValue,
-    impact,
-    recommendation,
-  } = props;
+  const { title, severity, detectedAt, description, subDescription, normalValue, currentValue, impact, recommendation, headerIcons, headerIconProps } = props;
   const [acknowledged, setAcknowledged] = useState(false);
 
-  const bgColor = severity === "high" ? "bg-[#fb2c360d]" : "bg-[#ff69000d]";
-  const borderColor =
-    severity === "high" ? "border-[#fb2c3680]" : "border-[#ff690080]";
+  const bgColor = severity === 'high' ? 'bg-[#fb2c360d]' : 'bg-[#ff69000d]';
+  const borderColor = severity === 'high' ? 'border-[#fb2c3680]' : 'border-[#ff690080]';
+  const headerButtonColor = severity === 'high' ? 'bg-[#f36]' : 'bg-[#06f]';
 
   return (
     <div className={`rounded-lg p-4 mb-4 ${bgColor} border ${borderColor}`}>
       {/* Header */}
       <div className="flex justify-between items-center mb-2">
         <div className="flex items-center gap-2">
-          <AlertTriangle color="#f36" width="17.5px" height="17.5px" />
+          {iconsMap[headerIcons](headerIconProps)}
           <h2 className="text-sm font-semibold text-gray-800">{title}</h2>
         </div>
-        <span
-          className={`text-xs font-semibold px-2 py-1 rounded ${
-            severity === "high"
-              ? "bg-[#f36] text-white"
-              : "bg-[#06f] text-white"
-          }`}
-        >
-          {severity}
-        </span>
+        <span className={`text-xs font-semibold px-2 py-1 rounded text-white ${headerButtonColor}`}>{severity}</span>
       </div>
 
       {/* Detected Time */}
@@ -67,22 +50,24 @@ const AlertCard = (props) => {
       <div className="flex items-center justify-between">
         {/* Recommendation */}
         <p className="text-xs text-gray-600">
-          Recommended action:{" "}
-          <span className="font-semibold">{recommendation}</span>
+          Recommended action: <span className="font-semibold">{recommendation}</span>
         </p>
 
         {/* Acknowledge Button */}
         <Button
           onClick={() => setAcknowledged(true)}
           className={`flex items-center gap-2 px-4 py-1 rounded font-medium transition text-xs ${
-            acknowledged
-              ? "bg-transparent text-[#00d68f] border border-[#00d68f]"
-              : "bg-[#06f] text-white"
+            acknowledged ? 'bg-transparent text-[#00d68f] border border-[#00d68f]' : 'bg-[#06f] text-white'
           }`}
         >
-          {acknowledged ? "Acknowledged" : (<><CheckCircle size={14} /> Acknowledge</>)}
+          {acknowledged ? (
+            'Acknowledged'
+          ) : (
+            <>
+              <CheckCircle size={14} /> Acknowledge
+            </>
+          )}
         </Button>
-
       </div>
     </div>
   );

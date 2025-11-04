@@ -1,16 +1,18 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Database } from 'lucide-react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Card from '../../components/card';
+import Tabs from '../../components/tabs';
 import data from '../../data/data-upload-store.json';
 import iconMap from '../../icons/lucid-icons';
 import { setSelectedTabIndex, uploadHistory } from '../../reducers/data-page-reducer';
+import { fetchUploadHistory } from './data-store.util';
 import EntryHistorySection from './entry-history-section';
 import ManualEntrySection from './manual-entry-section';
 import TemplateSection from './template-section';
-import FileUploadSection from './upload-file-section';
-import Tabs from '../../components/tabs';
-import { useEffect } from 'react';
-import { fetchUploadHistory } from './data-store.util';
+import FileCSVUploadSection from './upload-csv-file-section';
+import FilePDFUploadSection from './upload-pdf-file-section';
 
 const PageHeader = (props) => {
   return (
@@ -29,7 +31,7 @@ const PageHeader = (props) => {
 const HeaderCards = (props) => {
   return (
     <div className="mt-[21px] mb-[21px] grid grid-cols-4 gap-4">
-      {props.cards.map((item, index) => {
+      {props.cards.map((item) => {
         return (
           <Card className="border-[#eaeaea] border" key={item.id}>
             <div className="flex items-center justify-between p-1">
@@ -65,8 +67,8 @@ const DataStorePage = () => {
         <HeaderCards cards={data.headerSection.cards} history={{ count: history.uploadHistoryEntries.length, id: 'recent-entries' }} />
         <Tabs tabs={data.tabsSection} selectedTabIndex={selectedTabIndex} setSelectedTabIndex={(index) => dispatch(setSelectedTabIndex(index))} />
         {selectedTabIndex === 0 ? <TemplateSection {...data.tabsSection[selectedTabIndex]} /> : null}
-        {selectedTabIndex === 1 ? <FileUploadSection {...data.tabsSection[selectedTabIndex].details} /> : null}
-        {selectedTabIndex === 2 ? <FileUploadSection {...data.tabsSection[selectedTabIndex].details} /> : null}
+        {selectedTabIndex === 1 ? <FileCSVUploadSection {...data.tabsSection[selectedTabIndex].details} /> : null}
+        {selectedTabIndex === 2 ? <FilePDFUploadSection {...data.tabsSection[selectedTabIndex].details} /> : null}
         {selectedTabIndex === 3 ? <ManualEntrySection {...data.tabsSection[selectedTabIndex]} /> : null}
         {selectedTabIndex === 4 ? <EntryHistorySection {...data.tabsSection[selectedTabIndex]} /> : null}
       </div>

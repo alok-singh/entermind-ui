@@ -5,7 +5,7 @@
 }
 
 body {
-  color: rgb(15, 20, 25);
+  color: #0f1419;
   --var-green-color: #00d68f;
   --var-blue-color: #06f;
   --var-red-color: #f36;
@@ -13,5 +13,6 @@ body {
   --var-text-color: #0f1419;
   --var-light-text-color: #5c6370;
   --var-orange-color: #f54a00;
-  ---var-orange-background: #fff8ec;
+  --var-orange-background: #fff8ec;
+  --var-gray-background: #eff2f7;
 }

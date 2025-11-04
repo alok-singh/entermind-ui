@@ -46,7 +46,7 @@ const LoginPage = () => {
         <div className="p-10 shadow-xl bg-white border-radius-[11px] text-card-foreground flex flex-col rounded-xl border-0 gap-0">
           <div className="bg-white flex">
             <form className="w-full" onSubmit={handleLogin}>
-              <Input id="email" type="email" placeholder="Email" required={true} value={userName} onChange={({ target }) => dispatch(setUserName(target.value))} className="mb-6" />
+              <Input id="email" type="email" placeholder="Email" required={true} value={userName} onChange={({ target }) => dispatch(setUserName(target.value))} className="w-full mb-6 p-4" />
               <Input
                 id="password"
                 type="password"
@@ -54,7 +54,7 @@ const LoginPage = () => {
                 value={password}
                 required={true}
                 onChange={({ target }) => dispatch(setPassword(target.value))}
-                className="mb-6"
+                className="w-full mb-6 p-4"
               />
               <Button type="submit" className="w-full bg-[#007aff] text-white p-3.5 text-[14px]">
                 Sign In

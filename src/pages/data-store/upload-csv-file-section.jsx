@@ -1,14 +1,15 @@
-import { AlertCircle, CheckCheck, Eye, Loader } from 'lucide-react';
+import { AlertCircle, CheckCheck, Eye, Info, Sparkles } from 'lucide-react';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '../../components/button';
 import Table from '../../components/table';
 import UploadInput from '../../components/upload-input';
 import { TEMPLATES } from '../../config/vars';
 import iconMap from '../../icons/lucid-icons';
-import { setUploadData, setUploadLoading } from '../../reducers/data-page-reducer';
+import { setUploadCSVLoading, setUploadCSVData } from '../../reducers/data-page-reducer';
 import { createTemplateRequestBody } from '../../utils/create-request-body.util';
 import { postResource } from '../../utils/http.util';
 import { parseCSVFile } from '../../utils/parse.util';
+import Card from '../../components/card';
 
 const UploadHeader = (props) => {
   return (
@@ -103,22 +104,22 @@ const DataPreview = (props) => {
   );
 };
 
-const FileUploadSection = (props) => {
+const FileCSVUploadSection = (props) => {
   const dispatch = useDispatch();
   const { fileName, errors, data, totalRows, validRows, template, isLoading } = useSelector((state) => state.uploadPage.value.uploadCSV);
 
   const handleFileChange = async ([file]) => {
     const results = await parseCSVFile(file);
-    dispatch(setUploadData({ fileName: file?.name, results }));
+    dispatch(setUploadCSVData({ fileName: file?.name, results }));
   };
 
   const processFile = async () => {
     // api call to send data to server
     const postUrl = TEMPLATES[template.name].POST_API;
     const requestBody = createTemplateRequestBody(data);
-    dispatch(setUploadLoading(true));
+    dispatch(setUploadCSVLoading(true));
     await postResource(postUrl, requestBody);
-    dispatch(setUploadLoading(false));
+    dispatch(setUploadCSVLoading(false));
   };
 
   return (
@@ -131,6 +132,7 @@ const FileUploadSection = (props) => {
         handleFileChange={({ target }) => handleFileChange(target?.files)}
         fileName={fileName}
         title={props.uploadBoxTitle}
+        accept={props.inputTypeAccept}
       />
       {errors.length ? <ValidationSummary errors={errors} totalRows={totalRows} validRows={validRows} /> : null}
       {data?.columns?.length ? <DataPreview data={data} template={template} isValid={errors.length === 0} processFile={processFile} isLoading={isLoading} /> : null}
@@ -138,4 +140,4 @@ const FileUploadSection = (props) => {
   );
 };
 
-export default FileUploadSection;
+export default FileCSVUploadSection;

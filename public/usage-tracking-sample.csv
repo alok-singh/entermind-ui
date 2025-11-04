@@ -1,0 +1,121 @@
+industry,systemName,functionName,model,version,region,usageType,metric,dailyAvg,monthlyTotal,unitCost,monthlyCost,linkedCostId,linkedRoiId,humanHours,autoResolution,errorRate,downtime,owner,department,notes
+Energy,Artemis AI,Routing,Claude 3 Opus,v2.3,Tokyo,Realtime,Tokens,456875.15,12459756.67,0.00001,124.6,C017,R028,118.8,72.4,0.67,1.83,Wei Wei,AI Ops,Synthetic usage telemetry
+Manufacturing,WMS-Light,Chat,Gemini 1.5 Pro,v1.1,Virginia,Training,Tokens,1379515.01,33339781.68,0.00001,333.4,C049,R016,89.8,66.1,0.62,3.48,Wei Wei,AI Ops,Synthetic usage telemetry
+QSR,Claims Copilot,Summarize,Mixtral 8x7B,v3.4,Frankfurt,Inference,Images,16621.52,349868.74,0.03622,12672.25,C016,R037,22.7,45.8,0.78,1,Vedant,HR,Synthetic usage telemetry
+Retail,Redpulse,Image-Understand,Claude 3.5 Sonnet,v1.0,Frankfurt,Realtime,Requests,13779.67,341827.31,0.01249,4269.42,C002,R086,18.8,46.1,2.05,2.47,Sourabh,HR,Synthetic usage telemetry
+Insurance,EnterGrow,Forecast,Mixtral 8x7B,v1.7,Sydney,Batch,Images,1049.1,29513.05,0.04383,1293.56,C110,R038,60.8,77.2,1.55,0.58,Sourabh,AI Ops,Synthetic usage telemetry
+Telecom,Artemis AI,Routing,Claude 3.5 Sonnet,v2.9,Sydney,Training,Runs,16308.54,355994.13,0.02064,7347.72,C059,R035,134.5,77.9,1.73,2.11,Jin,Data Science,Synthetic usage telemetry
+Telecom,Integrity,RAG-Search,GPT-4.1,v2.9,Mumbai,Realtime,Requests,12245.9,340333.68,0.03096,10536.73,C111,R088,141.4,80,3.13,2.42,Hanim,Data Science,Synthetic usage telemetry
+Manufacturing,Agent Runtime,Chat,GPT-4.1,v2.5,Singapore,Inference,GB-Hours,17469.21,440066.81,1.3827,608480.38,C080,R013,72.1,80,1.74,3.32,Wei Wei,Finance,Synthetic usage telemetry
+Telecom,Integrity,Chat,Mixtral 8x7B,v1.8,Mumbai,Realtime,Requests,1543.56,38460.08,0.0128,492.29,C036,R007,83.6,70.3,1.39,4.09,Sourabh,Supply Chain,Synthetic usage telemetry
+Logistics,Agent Runtime,Summarize,Claude 3 Opus,v2.5,Singapore,Realtime,GB-Hours,13084.79,275126.46,0.8364,230115.77,C072,R071,5,45,2.15,3.1,Vedant,HR,Synthetic usage telemetry
+Healthcare,Sales Copilot,Token-Accounting,Claude 3.5 Sonnet,v2.0,Tokyo,Realtime,Runs,11225.01,294068.09,0.02418,7110.57,C085,R047,116,46.3,2.68,1.11,Vedant,Risk & Fraud,Synthetic usage telemetry
+Energy,WMS-Light,Routing,Mixtral 8x7B,v1.0,Tokyo,Realtime,Requests,16445.68,451024.56,0.02105,9494.07,C033,R079,35.4,46.6,3,1.08,Jin,Risk & Fraud,Synthetic usage telemetry
+Insurance,Claims Copilot,Chat,Mixtral 8x7B,v3.9,Singapore,Realtime,Images,13186.21,389809.46,0.0076,2962.55,C064,R001,87.2,42.7,3.28,4.19,Hanim,HR,Synthetic usage telemetry
+Telecom,Artemis AI,RAG-Search,GPT-4.1,v2.9,Frankfurt,Batch,Minutes,17633.74,426501.05,0.03084,13153.29,C089,R098,43.5,61.9,1.27,1.47,Jin,Marketing,Synthetic usage telemetry
+Manufacturing,WMS-Light,Routing,Mixtral 8x7B,v3.8,Virginia,Inference,Requests,4233.77,114920.8,0.03464,3980.86,C118,R087,25.6,79.1,3.42,0.89,Shakira,Risk & Fraud,Synthetic usage telemetry
+Government,EnterGrow,Routing,Gemini 1.5 Pro,v2.9,Frankfurt,Realtime,GB-Hours,14969.98,425355.41,0.5861,249300.81,C109,R055,130.3,68.8,0.19,0.73,Wei Wei,AI Ops,Synthetic usage telemetry
+Retail,WMS-Light,RAG-Search,Claude 3.5 Sonnet,v3.4,Tokyo,Training,GB-Hours,15697.93,345982.52,1.0915,377639.92,C046,R105,75.2,73.9,2.4,2.81,Jin,HR,Synthetic usage telemetry
+Manufacturing,Sales Copilot,Forecast,Mixtral 8x7B,v3.0,Mumbai,Realtime,Images,19136.2,569459.39,0.01632,9293.58,C071,R007,7,53.8,2.21,3.9,Hanim,Sales,Synthetic usage telemetry
+Energy,Redpulse,Extraction,Mixtral 8x7B,v1.4,Mumbai,Inference,GB-Hours,1535.66,45493.55,1.4755,67125.73,C016,R049,11.3,55.4,1,0.8,Vedant,AI Ops,Synthetic usage telemetry
+CPG,Agent Runtime,RAG-Search,GPT-4.1,v1.5,Frankfurt,Training,GB-Hours,12331.39,328248.06,0.9913,325392.3,C074,R071,60.5,83.1,1.18,1.1,Jin,HR,Synthetic usage telemetry
+Insurance,Artemis AI,Image-Understand,Gemini 1.5 Pro,v3.6,Singapore,Batch,Requests,17673.76,470711.34,0.01722,8105.65,C038,R028,152.3,74,1.71,2.81,Wei Wei,AI Ops,Synthetic usage telemetry
+Insurance,Redpulse,Token-Accounting,GPT-4o,v3.9,Frankfurt,Inference,Tokens,1365118.59,31683542.59,0.00001,316.84,C118,R102,151.5,61.2,1.94,1.41,Shakira,Risk & Fraud,Synthetic usage telemetry
+Healthcare,Agent Runtime,Token-Accounting,GPT-4.1,v2.3,Sydney,Training,Tokens,334831.25,9898536.58,0.00001,98.99,C069,R069,6.1,43.6,2.38,3.87,Wei Wei,Finance,Synthetic usage telemetry
+Insurance,Sales Copilot,Image-Understand,Mixtral 8x7B,v1.2,Singapore,Realtime,GB-Hours,6667.72,139190.05,0.1275,17746.73,C102,R033,91.5,71.6,0.87,1.29,Hanim,Supply Chain,Synthetic usage telemetry
+Energy,Claims Copilot,Image-Understand,Claude 3.5 Sonnet,v1.6,Virginia,Training,Minutes,167.68,4561.38,0.0041,18.7,C096,R075,12.1,86.7,1.32,2.51,Vedant,Service,Synthetic usage telemetry
+Media,EnterGrow,Forecast,Claude 3 Opus,v2.6,Virginia,Training,Images,3168.65,70339.78,0.03759,2644.07,C102,R103,136.7,56.2,2.26,1.49,Wei Wei,Risk & Fraud,Synthetic usage telemetry
+Banking,Artemis AI,Summarize,GPT-4.1,v1.9,Frankfurt,Realtime,Minutes,10973.13,228803.68,0.01129,2583.19,C095,R116,117.5,51.6,3.18,4.26,Jin,Marketing,Synthetic usage telemetry
+Telecom,Sales Copilot,Forecast,GPT-4o,v1.2,Virginia,Training,Minutes,9252.24,235901.09,0.01524,3595.13,C009,R033,20.2,79.9,1.76,1.65,Jin,Sales,Synthetic usage telemetry
+Insurance,WMS-Light,Summarize,GPT-4o,v2.7,Mumbai,Batch,Minutes,13205.47,355683.81,0.00847,3012.64,C073,R047,130.2,92.7,0.67,1.57,Jin,Finance,Synthetic usage telemetry
+QSR,Redpulse,RAG-Search,Mixtral 8x7B,v3.5,Mumbai,Realtime,Images,7206.89,166152.82,0.02803,4657.26,C023,R083,99,86.3,3.02,0.7,Shakira,Sales,Synthetic usage telemetry
+QSR,EnterGrow,Summarize,GPT-4.1,v3.0,Frankfurt,Realtime,Minutes,4294.58,87465.83,0.01377,1204.4,C115,R070,78.2,82.6,1.34,1.12,Shakira,Service,Synthetic usage telemetry
+Telecom,Agent Runtime,Summarize,Claude 3 Opus,v2.8,Singapore,Inference,Minutes,13699.03,377710.49,0.00788,2976.36,C021,R023,92.8,71.1,3.07,0.73,Wei Wei,Supply Chain,Synthetic usage telemetry
+CPG,Integrity,Extraction,Claude 3 Opus,v1.1,Sydney,Batch,Requests,904.03,19949.9,0.04548,907.32,C047,R050,77.8,65,0.26,4.9,Vedant,Data Science,Synthetic usage telemetry
+Government,WMS-Light,Forecast,Gemini 1.5 Pro,v3.9,Tokyo,Realtime,GB-Hours,7601.44,196700.85,1.7985,353766.48,C010,R067,44,93.5,0.86,2.03,Vedant,Supply Chain,Synthetic usage telemetry
+Logistics,Integrity,RAG-Search,Claude 3 Opus,v1.3,Singapore,Batch,Requests,3047.3,65741.15,0.0305,2005.11,C105,R016,107.5,62.8,1.22,0.57,Wei Wei,Supply Chain,Synthetic usage telemetry
+Logistics,Sales Copilot,RAG-Search,Mixtral 8x7B,v2.0,Tokyo,Training,Requests,11491.06,248336.65,0.03185,7909.52,C006,R115,93.7,43.1,0.98,0.9,Hanim,IT / Platform,Synthetic usage telemetry
+Media,Integrity,Forecast,GPT-4.1,v1.7,Frankfurt,Realtime,Images,3452.81,97727.08,0.03044,2974.81,C102,R075,132.2,50,2.34,1.32,Wei Wei,Risk & Fraud,Synthetic usage telemetry
+Logistics,EnterGrow,Extraction,Claude 3 Opus,v2.2,Singapore,Training,Requests,10478.09,304843.18,0.03453,10526.24,C106,R020,98.9,49.8,3.17,3,Shakira,HR,Synthetic usage telemetry
+Insurance,EnterGrow,Token-Accounting,Mixtral 8x7B,v1.9,Frankfurt,Training,GB-Hours,13002.17,327920.48,0.7533,247022.5,C006,R090,87.1,52.6,2.83,3.95,Hanim,Risk & Fraud,Synthetic usage telemetry
+Media,EnterGrow,Image-Understand,GPT-4o,v2.7,Tokyo,Training,Runs,11985.93,304889.82,0.01363,4155.65,C001,R091,120.3,40.4,1.88,2.6,Hanim,Sales,Synthetic usage telemetry
+Government,Redpulse,Image-Understand,Claude 3.5 Sonnet,v1.2,Mumbai,Batch,Runs,17106.79,414593.58,0.01892,7844.11,C036,R088,66.6,51.2,1.98,2.79,Jin,Risk & Fraud,Synthetic usage telemetry
+Healthcare,Agent Runtime,Forecast,Claude 3.5 Sonnet,v3.5,Virginia,Realtime,GB-Hours,2804.47,80315.27,0.2558,20544.65,C030,R058,126.4,92.2,0.44,2.54,Vedant,HR,Synthetic usage telemetry
+Media,Integrity,RAG-Search,Claude 3 Opus,v3.0,Singapore,Inference,Images,18520.94,451054.79,0.00414,1867.37,C029,R048,17.4,42.1,1.41,4.92,Shakira,HR,Synthetic usage telemetry
+QSR,Integrity,RAG-Search,Mixtral 8x7B,v2.7,Singapore,Inference,GB-Hours,18618.63,468845.64,0.4056,190163.79,C101,R077,84.1,78.4,2.19,3.37,Vedant,Sales,Synthetic usage telemetry
+Energy,Integrity,RAG-Search,GPT-4.1,v2.6,Sydney,Realtime,Images,11742.3,295640.9,0.03711,10971.23,C009,R118,19,55.6,2.92,4.58,Vedant,Risk & Fraud,Synthetic usage telemetry
+QSR,Sales Copilot,Extraction,Claude 3 Opus,v2.9,Singapore,Batch,Requests,8172.34,172147.48,0.00455,783.27,C038,R044,151.8,84.2,3.35,4.38,Shakira,Service,Synthetic usage telemetry
+Government,Agent Runtime,Image-Understand,Gemini 1.5 Pro,v2.3,Sydney,Realtime,GB-Hours,9241.37,239058.21,0.0742,17738.12,C015,R034,15.5,74.9,3.48,3.38,Jin,Risk & Fraud,Synthetic usage telemetry
+Manufacturing,Redpulse,Chat,Mixtral 8x7B,v2.3,Sydney,Training,Images,13490.27,380570.59,0.00473,1800.1,C120,R023,78.9,59.4,3.14,1.35,Wei Wei,Sales,Synthetic usage telemetry
+Logistics,Sales Copilot,Extraction,Mixtral 8x7B,v1.4,Tokyo,Inference,Requests,16707.06,473868.14,0.01845,8742.87,C100,R014,23.6,44.3,3.35,2.46,Sourabh,HR,Synthetic usage telemetry
+Banking,Agent Runtime,Routing,Gemini 1.5 Pro,v2.7,Frankfurt,Batch,Images,3698.29,102230.44,0.02605,2663.1,C051,R029,121.3,47.1,1.89,2.12,Shakira,AI Ops,Synthetic usage telemetry
+Healthcare,Redpulse,Image-Understand,Mixtral 8x7B,v1.7,Singapore,Realtime,Runs,13799.75,277626.13,0.01133,3145.5,C075,R013,55.4,73.7,0.98,2.74,Jin,Service,Synthetic usage telemetry
+Logistics,Redpulse,Routing,GPT-4o,v2.6,Tokyo,Realtime,GB-Hours,15056.31,356093.47,0.8132,289575.21,C058,R024,93.6,93.9,2.43,4.07,Wei Wei,Service,Synthetic usage telemetry
+Retail,Claims Copilot,Image-Understand,GPT-4o,v1.2,Mumbai,Training,Requests,8459.34,180562.22,0.04477,8083.77,C081,R067,87.8,57.4,1.75,1.25,Shakira,AI Ops,Synthetic usage telemetry
+Manufacturing,EnterGrow,RAG-Search,GPT-4.1,v1.4,Mumbai,Training,Images,14904.63,336810.23,0.01866,6284.88,C072,R120,130.6,58.9,1.5,1.76,Wei Wei,IT / Platform,Synthetic usage telemetry
+Retail,Artemis AI,Forecast,Claude 3.5 Sonnet,v2.8,Mumbai,Realtime,Tokens,762172.94,17427263.97,0.00001,174.27,C081,R019,139.6,75.2,3.26,2.11,Shakira,IT / Platform,Synthetic usage telemetry
+Manufacturing,EnterGrow,Summarize,GPT-4o,v2.3,Sydney,Batch,GB-Hours,5862.56,132931.93,1.2964,172332.95,C035,R114,74,87.5,1.33,2.93,Hanim,Finance,Synthetic usage telemetry
+Telecom,Artemis AI,Chat,GPT-4o,v3.3,Virginia,Batch,GB-Hours,14028.9,291810.2,0.3505,102279.48,C014,R013,14.9,88.3,1.96,0.13,Hanim,HR,Synthetic usage telemetry
+Insurance,EnterGrow,Forecast,Gemini 1.5 Pro,v1.1,Virginia,Realtime,Runs,4625.65,126631.48,0.02271,2875.8,C017,R017,86.6,49.4,0.22,1.78,Vedant,Supply Chain,Synthetic usage telemetry
+Logistics,WMS-Light,Token-Accounting,GPT-4o,v3.8,Tokyo,Realtime,GB-Hours,14990.79,431329.06,0.8813,380130.3,C082,R082,87.7,90,1.74,1.14,Sourabh,Supply Chain,Synthetic usage telemetry
+QSR,Redpulse,Image-Understand,Claude 3.5 Sonnet,v1.4,Singapore,Training,Minutes,16316.83,464694.59,0.01785,8294.8,C061,R069,6.3,90.7,3.32,2.39,Sourabh,Finance,Synthetic usage telemetry
+QSR,Sales Copilot,Chat,Gemini 1.5 Pro,v2.3,Mumbai,Realtime,Images,5035.43,136708.8,0.03265,4463.54,C107,R049,39.2,44.4,2.23,2.58,Shakira,Service,Synthetic usage telemetry
+QSR,WMS-Light,Image-Understand,GPT-4o,v1.2,Tokyo,Batch,Tokens,1273803.57,33344730.73,0.00001,333.45,C035,R090,101.5,50.3,0.17,0.25,Shakira,AI Ops,Synthetic usage telemetry
+Telecom,EnterGrow,Forecast,Claude 3.5 Sonnet,v1.7,Virginia,Training,Requests,1849.43,37260.93,0.01164,433.72,C054,R040,126.8,67.4,1.36,3.48,Sourabh,Risk & Fraud,Synthetic usage telemetry
+Insurance,Artemis AI,Chat,Claude 3.5 Sonnet,v2.1,Frankfurt,Realtime,Requests,3884.24,110372.21,0.04105,4530.78,C107,R002,23.9,82.2,0.95,3.86,Hanim,Sales,Synthetic usage telemetry
+Government,Integrity,Extraction,Claude 3 Opus,v3.1,Frankfurt,Inference,Images,7813,231359.64,0.04687,10843.83,C021,R081,117.9,81,1.97,0.61,Hanim,Service,Synthetic usage telemetry
+Retail,Redpulse,Chat,Mixtral 8x7B,v1.1,Tokyo,Realtime,Runs,350.6,9797.13,0.02965,290.48,C051,R102,42.7,93.3,2.08,3.45,Wei Wei,IT / Platform,Synthetic usage telemetry
+Telecom,Redpulse,Summarize,GPT-4o,v1.7,Singapore,Batch,GB-Hours,1248.04,29397.8,0.3248,9548.41,C069,R102,21.6,66.8,1.18,2.79,Wei Wei,Risk & Fraud,Synthetic usage telemetry
+Logistics,Sales Copilot,Chat,Mixtral 8x7B,v2.5,Virginia,Inference,Runs,17978.33,446815.82,0.02244,10026.55,C038,R070,113,50.4,0.73,1.74,Wei Wei,Supply Chain,Synthetic usage telemetry
+QSR,Artemis AI,Summarize,Gemini 1.5 Pro,v1.7,Sydney,Batch,Minutes,7373.9,147531.08,0.03226,4759.35,C049,R094,33.8,41,3.01,3.88,Jin,Risk & Fraud,Synthetic usage telemetry
+Government,EnterGrow,Image-Understand,GPT-4o,v3.7,Frankfurt,Inference,Minutes,5698.43,137321.02,0.01678,2304.25,C013,R067,107.1,42.4,3.29,0.89,Sourabh,Sales,Synthetic usage telemetry
+Insurance,Agent Runtime,Extraction,GPT-4.1,v1.9,Virginia,Realtime,GB-Hours,9823.7,257770.99,1.1888,306438.15,C007,R047,39.2,79.5,0.14,4.61,Wei Wei,Supply Chain,Synthetic usage telemetry
+Insurance,Agent Runtime,Chat,Claude 3.5 Sonnet,v3.6,Sydney,Training,Minutes,5353.02,109236.57,0.00445,486.1,C039,R010,151.4,92.8,0.43,3.63,Shakira,Finance,Synthetic usage telemetry
+Retail,Sales Copilot,Extraction,Gemini 1.5 Pro,v3.2,Frankfurt,Realtime,GB-Hours,2155.01,56862.62,0.7288,41441.48,C059,R090,108.1,88.6,0.67,0.9,Hanim,HR,Synthetic usage telemetry
+CPG,Artemis AI,Token-Accounting,Claude 3.5 Sonnet,v2.8,Sydney,Batch,Images,15295.48,371770.11,0.03657,13595.63,C078,R031,92.3,51.8,2.7,4.63,Vedant,Risk & Fraud,Synthetic usage telemetry
+Logistics,Agent Runtime,Image-Understand,GPT-4.1,v3.0,Sydney,Training,Minutes,2744.96,79338.25,0.00132,104.73,C029,R028,137.6,41.2,2.89,3.45,Vedant,HR,Synthetic usage telemetry
+Healthcare,Artemis AI,Summarize,GPT-4.1,v2.5,Tokyo,Inference,Runs,7373.3,190390.09,0.01242,2364.64,C104,R039,19.2,62,3.22,3.67,Wei Wei,Risk & Fraud,Synthetic usage telemetry
+Logistics,Artemis AI,Token-Accounting,Mixtral 8x7B,v3.9,Singapore,Batch,Tokens,1461592.18,37654761.04,0.00001,376.55,C011,R100,13.7,82.4,1.28,4.09,Hanim,Data Science,Synthetic usage telemetry
+Retail,Integrity,Image-Understand,GPT-4.1,v2.8,Singapore,Batch,Minutes,11320.01,263397.57,0.03519,9268.96,C020,R007,109.4,94.9,3.4,3.76,Shakira,HR,Synthetic usage telemetry
+Insurance,Sales Copilot,Image-Understand,Claude 3.5 Sonnet,v2.2,Tokyo,Batch,Tokens,951735.52,26128138.35,0.00001,261.28,C071,R052,45.7,61.9,1.58,3.49,Jin,Supply Chain,Synthetic usage telemetry
+Healthcare,Sales Copilot,Token-Accounting,Claude 3 Opus,v3.9,Tokyo,Inference,Requests,1479.3,41076.79,0.01685,692.14,C119,R074,18.9,76.9,1.54,1.74,Vedant,Risk & Fraud,Synthetic usage telemetry
+Media,Integrity,Forecast,GPT-4o,v2.9,Mumbai,Inference,Images,945.31,26640.46,0.01078,287.18,C048,R020,122.4,86.9,0.48,0.27,Shakira,Marketing,Synthetic usage telemetry
+QSR,Integrity,Routing,Mixtral 8x7B,v1.4,Mumbai,Realtime,Tokens,663786.84,18187845.61,0.00001,181.88,C028,R027,89.7,81.3,1.97,3.12,Jin,AI Ops,Synthetic usage telemetry
+Manufacturing,Integrity,Forecast,GPT-4o,v1.4,Tokyo,Batch,Tokens,929948.39,27388621.28,0.00001,273.89,C009,R050,107.4,76.5,3.2,1.8,Sourabh,AI Ops,Synthetic usage telemetry
+QSR,Claims Copilot,Extraction,Claude 3 Opus,v3.1,Sydney,Realtime,Minutes,10654.63,232954.68,0.02553,5947.33,C059,R072,148.6,41.2,0.94,2.65,Vedant,Supply Chain,Synthetic usage telemetry
+Manufacturing,Artemis AI,Chat,Claude 3.5 Sonnet,v3.5,Sydney,Batch,Requests,19920.09,593337.38,0.01452,8615.26,C008,R081,44.9,61.3,3.5,4.95,Shakira,Service,Synthetic usage telemetry
+Retail,Artemis AI,Routing,Claude 3 Opus,v3.2,Singapore,Realtime,Minutes,19214.08,501957.92,0.03165,15886.97,C030,R054,42.3,48.4,3.4,4.55,Vedant,Supply Chain,Synthetic usage telemetry
+Healthcare,Artemis AI,Extraction,Mixtral 8x7B,v1.9,Frankfurt,Inference,Requests,6214.52,168111.24,0.02667,4483.53,C018,R056,159.3,93.7,0.59,4.67,Jin,Risk & Fraud,Synthetic usage telemetry
+Insurance,EnterGrow,RAG-Search,Claude 3.5 Sonnet,v1.0,Sydney,Realtime,Images,6101.79,167531.34,0.04126,6912.34,C082,R120,119.4,48.4,0.74,0.66,Sourabh,IT / Platform,Synthetic usage telemetry
+Media,WMS-Light,Extraction,Gemini 1.5 Pro,v1.3,Virginia,Training,Runs,1635.53,45464.89,0.00757,344.17,C109,R078,77.7,75.7,0.73,1.94,Hanim,Marketing,Synthetic usage telemetry
+Telecom,Sales Copilot,Extraction,GPT-4.1,v2.0,Sydney,Realtime,Requests,14860.21,444059.25,0.03813,16931.98,C009,R023,148.7,94.2,3.05,2.45,Vedant,Supply Chain,Synthetic usage telemetry
+Retail,Claims Copilot,Image-Understand,GPT-4.1,v3.6,Virginia,Batch,Images,12249.52,335939.15,0.0301,10111.77,C068,R083,140.7,83.3,1.87,2.26,Sourabh,Sales,Synthetic usage telemetry
+Healthcare,Claims Copilot,Chat,Gemini 1.5 Pro,v2.8,Virginia,Training,Requests,5859.03,140501.88,0.01592,2236.79,C106,R037,76.5,63.2,2.18,0.27,Shakira,Marketing,Synthetic usage telemetry
+Logistics,Agent Runtime,Summarize,Mixtral 8x7B,v3.1,Tokyo,Inference,Images,8300.51,203436.03,0.00977,1987.57,C076,R115,115.5,51.1,1.65,1.25,Wei Wei,Marketing,Synthetic usage telemetry
+Government,EnterGrow,Summarize,GPT-4.1,v3.7,Virginia,Batch,Tokens,1047658.42,24977092.12,0.00001,249.77,C102,R066,99.9,48.8,1.97,0.22,Jin,Risk & Fraud,Synthetic usage telemetry
+Media,Artemis AI,RAG-Search,GPT-4o,v1.0,Mumbai,Batch,Runs,14616.73,432796.42,0.01515,6556.87,C024,R016,144.3,92.8,0.11,3.83,Sourabh,Supply Chain,Synthetic usage telemetry
+Logistics,Agent Runtime,Chat,Gemini 1.5 Pro,v2.3,Tokyo,Realtime,Images,8232.52,171187.43,0.03041,5205.81,C032,R113,89.8,74.1,2,4.13,Sourabh,Marketing,Synthetic usage telemetry
+Telecom,Integrity,Routing,GPT-4.1,v1.0,Virginia,Batch,Runs,18411.67,377260.89,0.02143,8084.7,C023,R021,109.2,73.6,2.45,2.97,Shakira,Marketing,Synthetic usage telemetry
+Logistics,Redpulse,Chat,GPT-4.1,v2.5,Sydney,Realtime,Tokens,1516896.05,43130051.47,0.00001,431.3,C009,R038,78,46.7,3.02,1.65,Hanim,HR,Synthetic usage telemetry
+Retail,Sales Copilot,Chat,GPT-4.1,v3.8,Singapore,Realtime,GB-Hours,13788.65,404544.05,1.9728,798084.5,C037,R055,99.4,57.4,1.89,4.98,Vedant,Marketing,Synthetic usage telemetry
+Media,Agent Runtime,Token-Accounting,Claude 3 Opus,v1.9,Tokyo,Batch,Requests,81.54,1650.36,0.03165,52.23,C016,R095,136.5,84,3.5,2.07,Vedant,Risk & Fraud,Synthetic usage telemetry
+Healthcare,Sales Copilot,Chat,Mixtral 8x7B,v1.4,Sydney,Training,Runs,6040.67,154036.7,0.03858,5942.74,C015,R088,56.7,61.8,2.03,4.8,Jin,Sales,Synthetic usage telemetry
+CPG,Redpulse,Token-Accounting,Claude 3 Opus,v1.2,Mumbai,Inference,GB-Hours,9239.33,264727.53,1.7939,474894.72,C060,R101,131.2,91,0.29,2.61,Shakira,Risk & Fraud,Synthetic usage telemetry
+Healthcare,Integrity,Extraction,Gemini 1.5 Pro,v3.5,Sydney,Training,Requests,5645.18,114663.38,0.0492,5641.44,C081,R069,135.6,71.4,1.42,2.98,Vedant,Risk & Fraud,Synthetic usage telemetry
+Government,Integrity,Forecast,Claude 3 Opus,v1.7,Tokyo,Batch,Images,16597.68,382182.94,0.02673,10215.75,C023,R015,63,42.1,0.79,0.46,Shakira,AI Ops,Synthetic usage telemetry
+Logistics,Artemis AI,Extraction,Claude 3.5 Sonnet,v2.8,Sydney,Batch,Requests,15401.15,323154.87,0.04913,15876.6,C067,R087,158.9,51.3,0.22,1.94,Shakira,Data Science,Synthetic usage telemetry
+Banking,WMS-Light,Chat,Mixtral 8x7B,v3.1,Sydney,Realtime,Tokens,206250.5,5705260.46,0.00001,57.05,C096,R040,8.5,81.7,2.27,1.05,Jin,Sales,Synthetic usage telemetry
+QSR,WMS-Light,Routing,Claude 3 Opus,v3.1,Sydney,Inference,Requests,5509.06,111021.7,0.03152,3499.4,C066,R014,37,59.3,1.18,0.71,Wei Wei,Service,Synthetic usage telemetry
+Media,Sales Copilot,RAG-Search,GPT-4.1,v2.9,Sydney,Realtime,Tokens,260191.5,6428643.96,0.00001,64.29,C087,R007,21.4,43,1.55,0.89,Shakira,IT / Platform,Synthetic usage telemetry
+Energy,Agent Runtime,Routing,Claude 3.5 Sonnet,v2.3,Virginia,Training,Images,11377.4,238119.44,0.04032,9600.98,C090,R060,20.1,57.1,2.29,3.83,Hanim,Sales,Synthetic usage telemetry
+Retail,Artemis AI,Forecast,Claude 3.5 Sonnet,v2.2,Virginia,Batch,Runs,9093,184611.92,0.02429,4484.22,C045,R062,76.5,49.4,2.71,3.02,Jin,HR,Synthetic usage telemetry
+Insurance,Claims Copilot,Summarize,Claude 3.5 Sonnet,v3.1,Sydney,Realtime,Images,11831.19,264850.1,0.01294,3427.16,C021,R062,64.5,58.7,2.87,2.95,Hanim,IT / Platform,Synthetic usage telemetry
+CPG,Sales Copilot,RAG-Search,Mixtral 8x7B,v3.1,Virginia,Realtime,Tokens,1184346.66,29169373.78,0.00001,291.69,C072,R013,132.4,49.7,3.35,0.35,Sourabh,IT / Platform,Synthetic usage telemetry
+Manufacturing,Redpulse,Token-Accounting,Mixtral 8x7B,v3.0,Singapore,Inference,Requests,17750.87,515353.2,0.03217,16578.91,C001,R097,27.7,48.2,1.91,1.95,Shakira,Supply Chain,Synthetic usage telemetry
+Retail,Sales Copilot,Routing,Claude 3.5 Sonnet,v3.4,Mumbai,Batch,Tokens,1165474.82,30436267.19,0.00001,304.36,C066,R052,136.4,86.9,0.31,4.51,Sourabh,AI Ops,Synthetic usage telemetry
+Government,Redpulse,Summarize,Claude 3.5 Sonnet,v1.3,Mumbai,Realtime,GB-Hours,6396.64,152418.47,0.7755,118200.52,C070,R028,107.7,66.1,0.74,1.92,Vedant,Finance,Synthetic usage telemetry
+Telecom,WMS-Light,RAG-Search,GPT-4o,v1.1,Virginia,Training,Requests,14440.72,359097.58,0.0224,8043.79,C018,R011,26.3,84.3,3.02,4.47,Wei Wei,IT / Platform,Synthetic usage telemetry
+Manufacturing,Artemis AI,Token-Accounting,Gemini 1.5 Pro,v2.8,Mumbai,Realtime,Runs,4553.53,110412.71,0.00136,150.16,C064,R109,118.3,79.2,1.02,4.63,Shakira,Risk & Fraud,Synthetic usage telemetry
+Banking,Integrity,Token-Accounting,Mixtral 8x7B,v2.1,Frankfurt,Realtime,GB-Hours,1647.26,44973.25,1.0623,47775.08,C110,R097,125.7,65.6,0.37,4.45,Sourabh,Sales,Synthetic usage telemetry
+Logistics,EnterGrow,Forecast,Gemini 1.5 Pro,v1.5,Frankfurt,Training,Images,9107.99,264683.21,0.02912,7707.58,C043,R054,59.7,93.8,1.1,0.84,Wei Wei,IT / Platform,Synthetic usage telemetry
+Government,WMS-Light,Forecast,GPT-4.1,v3.7,Frankfurt,Inference,Minutes,1079.82,32290.56,0.04064,1312.29,C080,R004,49.5,44.5,1.82,4.26,Vedant,Service,Synthetic usage telemetry

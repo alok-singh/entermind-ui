@@ -6,6 +6,7 @@ const Tabs = (props) => {
       {props.tabs.map((tab, index) => {
         return (
           <div
+            key={tab.title}
             onClick={() => props.setSelectedTabIndex(index)}
             className={`rounded-xl flex items-center gap-1 pt-[3.5px] pb-[3.5px] pr-[7px] pl-[7px] cursor-pointer ${
               props.selectedTabIndex === index ? "bg-white" : ""

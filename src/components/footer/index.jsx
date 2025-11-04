@@ -26,6 +26,7 @@ const Footer = () => {
         {linkList.map((item) => {
           return (
             <Link
+              key={item.path}
               className={`${classList} ${
                 currentPath.pathname === item.path ? activeColor : inactiveColor
               }`}

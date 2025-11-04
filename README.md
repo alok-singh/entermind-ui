@@ -1,4 +1,5 @@
 # Questions
+
 - Cloud Infra
   - Can frontend be on S3 and cloudfront?
   - What is the expected backend system node server can run no local but on cloud need Lambda/EC2s need to do it?
@@ -7,6 +8,7 @@
     - to be handled in express server? cognito? or dummy is okay?
 
 # Technical Requirements
+
 - Frontend: React (or Next.js) with Tailwind CSS and Recharts/Chart.js for visualization.
 - Backend: Node.js + Express or Python FastAPI with mock endpoints (`/api/ai-cost`, `/api/model-usage`, `/api/roi`, `/api/alerts`).
 - Data: Use JSON files or mock APIs to simulate system behavior.
@@ -27,3 +29,26 @@
 - Functionality & Data Binding 20% APIs, ROI calculation, interactivity
 - Problem-Solving & Initiative 20% Creative insight logic, data simulation
 - Documentation & Delivery 10% README clarity, deployment link, demo video
+
+
+- Tasks
+  - PDF bill data extraction process
+    - Add AWS bill [done]
+    - Add Open AI bill [need ]
+    - Add Azure pdf bill
+
+  - Excel with more columns
+  - feed cost data to llms to get reduction possibilites
+
+- To do
+  - API key usage data Azure
+  - Make the PDF data editable
+
+- Explore
+  - API key usage data OpenAI
+
+- Needed
+  - Open AI bill template PDF  
+  - Open Azure bill template PDF  
+  - more cost data
+  - API keys

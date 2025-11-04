@@ -12,9 +12,10 @@ const UploadInput = (props) => {
         <span>Choose File</span>
         <input
           type="file"
-          accept=".csv,.xls,.xlsx"
+          accept={props.accept}
           className="hidden"
           onChange={props.handleFileChange}
+          multiple={props.multiple}
         />
       </label>
 

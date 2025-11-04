@@ -2,30 +2,40 @@ import { CATEGORIES, CATEGORIES_ICONS } from "../../config/vars";
 import { deepClone } from "../../utils/helper.util";
 import { convertNumberToString } from "../../utils/parse.util";
 
-const colors = [
-  // "#b66aae", // purple
-  // "#35a2eb", // blue
-  // "#3ecc1f", // parrot
-  // "#4cc0c0", // green
-  // "#ffce56", // yellow
-  // "#ff9f40", // orange
-  // "#b66aae", // pink
-  // "#ff6385", // red
-  '#FFAF6EF1',
-  '#7D8BE0F1',
-  '#9A81B0F1',
-  '#EE7EA0F1',
-  '#EA7D70F1',
-  '#BCC07BF1',
-  '#ABCDDEF1',
-  '#8E715BF1',
-  '#E1CFCAF1',
-  '#F69F95F1',
-];
-
-const calculateTotalCost = (data) => {
-  const sum = data?.reduce?.((sum, item) => sum + item.amount, 0);
+const calculateTotalCost = (data, annualizedCost = 'annualizedCost') => {
+  const sum = data?.reduce?.((sum, item) => sum + item[annualizedCost], 0);
   return sum;
+}
+
+const getIconFromCategory = (category) => {
+  const matchString = category.toLowerCase();
+  if (matchString.indexOf('license') !== -1) {
+    return 'fileText';
+  }
+  if (matchString.indexOf('human') !== -1 || matchString.indexOf('professional') !== -1) {
+    return 'users';
+  }
+  if (matchString.indexOf('network') !== -1) {
+    return 'network';
+  }
+  if (matchString.indexOf('data') !== -1 || matchString.indexOf('storage') !== -1) {
+    return 'database';
+  }
+  if (matchString.indexOf('compute') !== -1) {
+    return 'cpu';
+  }
+  if (matchString.indexOf('observability') !== -1) {
+    return 'cloud'
+  }
+  if (matchString.indexOf('api') !== -1) {
+    return 'layers'
+  }
+  if (matchString.indexOf('ai') !== -1) {
+    return 'brain';
+  }
+
+  return 'webhook';
+
 }
 
 const groupByOnKey = (array, key) => {
@@ -58,10 +68,9 @@ const checkArrayTrend = (arr, key) => {
   return "stable";
 }
 
-
 export const getMetricCardsData = (data, costData) => {
   const cards = deepClone(data.metricSection.cards);
-  cards['total-annual-cost'].value = convertNumberToString(calculateTotalCost(costData));
+  cards['total-annual-cost'].value = convertNumberToString(calculateTotalCost(costData, 'annualizedCost'));
   return Object.values(cards);
 };
 
@@ -69,7 +78,7 @@ export const getCostOverview = (data, costData) => {
   const costOverview = deepClone(data);
   const costMap = costData.reduce((acc, item) => {
     acc[item.category] = acc[item.category] ? acc[item.category] : 0;
-    acc[item.category] += item.amount;
+    acc[item.category] += item.annualizedCost;
     return acc;
   }, {});
 
@@ -77,9 +86,6 @@ export const getCostOverview = (data, costData) => {
   costOverview.chartSection.chartList.forEach((chart, index) => {
     chart.data.labels = labels.length ? labels : chart.data.labels;
     chart.data.datasets[0].data = labels.length ? Object.values(costMap) : chart.data.datasets[0].data;
-    if (labels.length) {
-      chart.data.datasets[0].backgroundColor = colors.slice(0, labels.length)
-    }
   });
 
   return costOverview;
@@ -93,10 +99,10 @@ export const getCostBreakDown = (data, costData) => {
   const additionalItem = Object.keys(categoryMap).map(item => {
     const sum = calculateTotalCost(categoryMap[item]);
     const randomPercent = Math.random();
-    const iconIndex = CATEGORIES.findIndex(category => category === item);
     const subcategoryMap = groupByOnKey(categoryMap[item], 'subcategory');
+
     return {
-      icon: CATEGORIES_ICONS[iconIndex === -1 ? 0 : iconIndex],
+      icon: getIconFromCategory(item),
       iconProps: { className: 'text-[#06f] w-8 h-8 p-2 rounded-lg bg-[linear-gradient(to_right_bottom,#0066ff33_0%,#00d68f33_100%)]' },
       textLeftTop: item,
       textLeftBottom: `${convertNumberToString(sum)} annually • ${(100 * sum / totalCost).toFixed(2)}% of total`,

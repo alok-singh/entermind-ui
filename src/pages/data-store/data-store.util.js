@@ -5,7 +5,8 @@ export const fetchUploadHistory = async () => {
   const result = await getResource(GET_TRANSACTIONS_URL);
   return (
     result?.response?.data?.map?.((item) => {
-      return Object.values(item);
+      const { date, type, id } = item;
+      return [date, type, id];
     }) || []
   );
 };

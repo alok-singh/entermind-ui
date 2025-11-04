@@ -23,7 +23,7 @@ const DescriptionCard = (props) => {
   );
 };
 
-const GuidCard = (props) => {
+const GuideCard = (props) => {
   return (
     <Card className="border border-[#e2e8f0]">
       <div className="flex items-center gap-2 pt-2 pl-2 pr-2 pb-8">
@@ -33,7 +33,7 @@ const GuidCard = (props) => {
       <div className="pb-2 pl-2 pr-2 grid grid-cols-3 gap-6">
         {props.steps.map((step, index) => {
           return (
-            <div className="flex gap-4">
+            <div className="flex gap-4" key={`step-guid-${index}`}>
               <div className="w-12 h-12 rounded-full bg-linear-to-br from-[#0066ff] to-[#00d68f] flex items-center justify-center text-white font-semibold shrink-0">
                 {index + 1}
               </div>
@@ -91,11 +91,11 @@ const TemplateCard = (props) => {
                 );
               })}
               <div className="h-px bg-[#e2e8f0] mb-2.5"></div>
-              <Button className="w-full text-white bg-[#06f] text-[12.25px] flex items-center justify-center gap-4 p-[7px] mb-[7px]" onClick={() => downloadFile(card.downloadFileLink)}>
+              <Button className="w-full text-white bg-[#06f] text-[12.25px] flex items-center justify-center gap-4 p-[7px] mb-[7px]" onClick={() => downloadFile(card.downloadFileTemplate)}>
                 <Download width="14px" height="14px" color="#fff" />
                 Download Empty Template
               </Button>
-              <Button className="w-full text-[#0f1419] text-[12.25px] border border-[#e2e8f0] flex items-center justify-center gap-4 p-[7px] mb-[7px]">
+              <Button className="w-full text-[#0f1419] text-[12.25px] border border-[#e2e8f0] flex items-center justify-center gap-4 p-[7px] mb-[7px]" onClick={() => downloadFile(card.downloadFileSample)}>
                 <FileCheck width="14px" height="14px" color="#0f1419" />
                 Download with Sample Data
               </Button>
@@ -116,7 +116,7 @@ const TemplateSection = (props) => {
     <div className="mt-2">
       <DescriptionCard {...props.descriptionCard} />
       <TemplateCard cards={props.cardSection} />
-      <GuidCard {...props.guideSection} />
+      <GuideCard {...props.guideSection} />
     </div>
   );
 };
