@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { DollarSign, CheckCircle } from 'lucide-react';
 import Button from '../../components/button';
 import iconsMap from '../../icons/lucid-icons';
+import Empty from '../../components/empty';
 
 const AlertCard = (props) => {
   const { title, severity, detectedAt, description, subDescription, normalValue, currentValue, impact, recommendation, headerIcons, headerIconProps } = props;
@@ -79,6 +80,7 @@ const AnomalySection = (props) => {
       {props.alertCard.map((item) => {
         return <AlertCard {...item} />;
       })}
+      {props.alertCard.length === 0 ? <Empty title="No data yet" description="Upload data to see results" /> : null}
     </div>
   );
 };

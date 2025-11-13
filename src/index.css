@@ -7,6 +7,7 @@
 body {
   color: #0f1419;
   --var-green-color: #00d68f;
+  --var-green-background: #b7e8ca;
   --var-blue-color: #06f;
   --var-red-color: #f36;
   --var-border-color: #e2e8f0;
@@ -15,4 +16,7 @@ body {
   --var-orange-color: #f54a00;
   --var-orange-background: #fff8ec;
   --var-gray-background: #eff2f7;
+  --var-red-border: #fb2c364d;
+  --var-blue-border: #2b7fff4d;
+  --var-green-border: #00c9514d;
 }

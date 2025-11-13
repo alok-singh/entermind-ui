@@ -1,6 +1,6 @@
-import { TrendingDown, TrendingUp, TrendingUpDown } from "lucide-react";
-import Chart from "../../components/chart";
-import Card from "../../components/card";
+import { TrendingDown, TrendingUp, TrendingUpDown } from 'lucide-react';
+import CombinedChart from '../../components/combined-chart';
+import Card from '../../components/card';
 
 const CostTrends = ({ trends }) => {
   return (
@@ -16,22 +16,16 @@ const CostTrends = ({ trends }) => {
         {trends.map((item, idx) => (
           <div key={idx}>
             <p className="text-sm text-[#5c6370] mb-2">{item.label}</p>
-            <p
-              className={`text-xs flex items-center gap-2 ${
-                item.value >= 0 ? "text-[#fb2c36]" : "text-[#00c951]"
-              }`}
-            >
+            <p className={`text-xs flex items-center gap-2 ${item.value >= 0 ? 'text-[#fb2c36]' : 'text-[#00c951]'}`}>
               {item.value >= 0 ? (
                 <>
                   <TrendingUp width="12px" height="12px" />
-                  {item.value}%
-                  <span className="text-xs text-[#5c6370]">change</span>
+                  {item.value}%<span className="text-xs text-[#5c6370]">change</span>
                 </>
               ) : (
                 <>
                   <TrendingDown width="12px" height="12px" />
-                  {Math.abs(item.value)}%
-                  <span className="text-xs text-[#5c6370]">change</span>
+                  {Math.abs(item.value)}%<span className="text-xs text-[#5c6370]">change</span>
                 </>
               )}
             </p>
@@ -44,9 +38,9 @@ const CostTrends = ({ trends }) => {
 
 const ChartSection = (props) => {
   return (
-    <div className="mt-6 grid gap-3.5 grid-cols-2 max-h-[400px]">
-      {props.chartList.map((chart) => {
-        return <Chart key={chart.id} {...chart} />;
+    <div className="mt-6 grid gap-3.5 grid-cols-2">
+      {Object.values(props).map((chart) => {
+        return <CombinedChart key={chart.id} {...chart} />;
       })}
     </div>
   );

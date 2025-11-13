@@ -1,10 +1,10 @@
-import Chart from "../../components/chart";
+import CombinedChart from "../../components/combined-chart";
 
 const ChartSection = (props) => {
   return (
     <div className="max-w-[1400px] mx-auto p-8 grid gap-3.5 grid-cols-2">
       {props.chartList.map((chart) => {
-        return <Chart key={chart.id} {...chart} />;
+        return <CombinedChart key={chart.id} {...chart} />;
       })}
     </div>
   );

@@ -88,7 +88,7 @@ export const parseCSVFile = (file) => {
 
 export const convertNumberToString = (num) => {
   if (num === null || num === undefined) return 'NA';
-  if (num < 1000) return `$${Number(num).toFixed(2)}`;
+  if (num < 1000) return `${num >= 0 ? '$' : '-$'}${Number(Math.abs(num)).toFixed(2)}`;
 
   const units = [
     { value: 1e9, suffix: 'B' },
@@ -98,9 +98,28 @@ export const convertNumberToString = (num) => {
 
   for (let unit of units) {
     if (num >= unit.value) {
-      const formatted = (num / unit.value).toFixed(2);
+      const formatted = (Math.abs(num) / unit.value).toFixed(2);
       // Remove trailing zeros (e.g., 1.00 -> 1)
-      return `$${formatted.replace(/\.00$/, '').replace(/(\.\d)0$/, '$1')}${unit.suffix}`;
+      return `${`${num > 0 ? '$' : '-$'}`}${formatted.replace(/\.00$/, '').replace(/(\.\d)0$/, '$1')}${unit.suffix}`;
     }
   }
+};
+
+/**
+ * Calculates the average percentage increase between consecutive numbers.
+ * @param {number[]} numbers - Array of numeric values.
+ * @returns {number} Average percentage increase.
+ */
+export const averagePercentageIncrease = (numbers) => {
+  if (!Array.isArray(numbers) || numbers.length < 2) return 0;
+
+  const percentageIncreases = numbers
+    .map((curr, i, arr) => {
+      if (i === 0 || arr[i - 1] === 0) return null;
+      return ((curr - arr[i - 1]) / Math.abs(arr[i - 1])) * 100;
+    })
+    .filter(val => val !== null);
+
+  const total = percentageIncreases.reduce((sum, val) => sum + val, 0);
+  return percentageIncreases.length ? total / percentageIncreases.length : 0;
 }

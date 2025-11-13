@@ -6,13 +6,15 @@ export const ALLOW_UNKNOWN_PARAMS = false;
 export const LOGIN_KEY = 'LOGIN_KEY';
 export const SESSION_TIME = 3600;
 
+// export const BASE_URL = 'https://s85j4uvfo1.execute-api.ap-southeast-1.amazonaws.com/dev';
 export const BASE_URL = 'http://localhost:3000/dev';
-export const CLIENT_ID = 'client-3';
+export const CLIENT_ID = 'client-4';
 
 export const GET_ROI_URL = `${BASE_URL}/v1/get-roi?client=${CLIENT_ID}`;
 export const GET_COST_URL = `${BASE_URL}/v1/get-cost?client=${CLIENT_ID}`;
 export const GET_USAGE_URL = `${BASE_URL}/v1/get-usage?client=${CLIENT_ID}`;
 export const GET_TRANSACTIONS_URL = `${BASE_URL}/v1/get-transactions?client=${CLIENT_ID}`;
+export const GET_COST_ANOMALIES_URL = `${BASE_URL}/v1/get-anomalies?client=${CLIENT_ID}&type=COST`;
 
 export const POST_ROI_URL = `${BASE_URL}/v1/create-roi`;
 export const POST_COST_URL = `${BASE_URL}/v1/create-cost`;
@@ -54,6 +56,7 @@ export const TEMPLATES = {
 
 export const CATEGORIES = ['AI Model Costs', 'Infrastructure & Compute', 'Agent Platform Licenses', 'Talent Costs', 'Data & Integration', 'Revenue Growth', 'Cost Reduction', 'Operational Efficiency'];
 export const CATEGORIES_ICONS = ['brain', 'database', 'cpu', 'users', 'layers', 'trendingUp', 'dollar', 'zap'];
+export const CHART_COLOR_LIST = ['#DC143CCF', '#00D68FFF', '#FFD700CF', '#00006FAF', '#FFB6C1CF', '#8DB6CDCF', '#00C5CDCF', '#FFFF00CF', '#FFA500CF', '#8B5A00CF', '#FF4500CF', '#800080CF', '#FA8072CF', '#FF3E96CF', '#BA55D3CF', '#191970CF', '#00FF7FCF', '#B7B7B7CF', '#000000CF', '#006400CF', '#ADFF2FCF', '#EEEE00CF', '#3D59ABCF', '#AB82FFCF', '#CDB5CDCF', '#FF69B4CF', '#FF0000CF']
 
 export const SUPPORTED_PDF_FILE_TYPES = {
   AWS_BILL: 'AWS_BILL'

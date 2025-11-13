@@ -4,12 +4,12 @@ import AwsBillPdfPreview from '../../components/awsBillPdfPreview';
 import Button from '../../components/button';
 import Card from '../../components/card';
 import UploadInput from '../../components/upload-input';
-import { POST_COST_URL, POST_UPLOAD_PDF, SUPPORTED_PDF_FILE_TYPES, TEMPLATES } from '../../config/vars';
+import { CLIENT_ID, POST_COST_URL, POST_UPLOAD_PDF, SUPPORTED_PDF_FILE_TYPES } from '../../config/vars';
 import iconMap from '../../icons/lucid-icons';
 import { setUploadPDFData, setUploadPDFLoading } from '../../reducers/data-page-reducer';
-import { createTemplateRequestBody } from '../../utils/create-request-body.util';
 import { formatDateToYYYYMMDD, parseAWSDateRange } from '../../utils/date.util';
 import { postResource, uploadPdf } from '../../utils/http.util';
+import { removeEmpty } from '../../utils/parse.util';
 
 const UploadHeader = (props) => {
   return (
@@ -85,53 +85,70 @@ const FilePDFUploadSection = (props) => {
   };
 
   const processFile = async () => {
-    const columns = TEMPLATES.COST.FIELDS;
-    const rows = uploadData.flatMap((data) => {
-      return data.results.map((item) => {
-        const { start, end } = parseAWSDateRange(data.billingPeriod);
-        return [
-          'IT', // industry
-          'Infrastructure & Compute', // category
-          item.subcategory, // subcategory
-          `AWS Bill for ${formatDateToYYYYMMDD(start)}-${formatDateToYYYYMMDD(end)}`, // description
-          'Fixed', // costType
-          'AWS', // vendor
-          'Data Science', // department
-          '', // modelService
-          'Singapore', // cloudRegion
-          'Production', // environment
-          '', // usageUnit
-          '', // quantity
-          0, // unitCost
-          item.subcategoryAmount, // monthlyCost
-          0, // annualizedCost
-          data.account, // billingAccount
-          '', // contractId
-          formatDateToYYYYMMDD(start), // startDate
-          formatDateToYYYYMMDD(end), // endDate
-          'Sourabh', // owner
-          'AWS bill, some other tag', // tags
-          'Notes' // notes
-        ];
+    const data = uploadData.flatMap((data) => {
+      const { start, end } = parseAWSDateRange(data.billingPeriod);
+      const startMilliseconds = start.getTime();
+      const endMilliseconds = end.getTime();
+      return data?.results?.flatMap?.((service) => {
+        return service?.details?.flatMap?.((region) => {
+          return (
+            region?.subtotal?.flatMap?.((lineItemList) => {
+              return lineItemList?.rates?.flatMap?.((rateItem) => {
+                return removeEmpty({
+                  startDate: startMilliseconds,
+                  endDate: endMilliseconds,
+                  billingAccount: data.account,
+                  industry: 'Cloud',
+                  category: service.subcategory,
+                  subcategory: lineItemList.title,
+                  description: rateItem.rate,
+                  costType: 'fixed',
+                  vendor: 'AWS',
+                  department: 'UES',
+                  modelService: service.subcategory,
+                  cloudRegion: region.title,
+                  environment: 'production',
+                  usageUnit: rateItem.quantity,
+                  quantity: rateItem.quantity,
+                  monthlyCost: rateItem.amount,
+                  annualizedCost: rateItem.amount * 12,
+                  contractId: 'AWS-2021',
+                  owner: 'Alok',
+                  tags: 'aws bill upload',
+                  notes: lineItemList.title
+                });
+              });
+            }) || [
+              removeEmpty({
+                startDate: startMilliseconds,
+                endDate: endMilliseconds,
+                billingAccount: data.account,
+                industry: 'Cloud',
+                category: service.subcategory,
+                subcategory: region.title,
+                costType: 'fixed',
+                vendor: 'AWS',
+                department: 'UES',
+                modelService: service.subcategory,
+                environment: 'production',
+                monthlyCost: region.amount,
+                annualizedCost: region.amount * 12,
+                contractId: 'AWS-2021',
+                owner: 'Alok',
+                tags: 'aws bill upload'
+              })
+            ]
+          );
+        });
       });
     });
 
-    const requestBody = createTemplateRequestBody({ rows, columns });
-    requestBody.data = requestBody.data.filter((item) => item.amount !== 0);
-
     // api call to send data to server
-    const postUrl = POST_COST_URL;
-    await postResource(postUrl, requestBody);
+    await postResource(POST_COST_URL, { client: CLIENT_ID, data });
   };
 
   return (
-    <div className="p-6 border-[#e2e8f0] border mt-2 rounded-xl relative">
-      {isLoading && (
-        <div className="flex items-center justify-center w-full absolute top-0 bottom-0 left-0 right-0 h-auto bg-[#fff0f]">
-          <Loader className="animate-spin" />
-        </div>
-      )}
-
+    <div className="p-6 border-[#e2e8f0] border mt-2 rounded-xl">
       {/* Header */}
       <UploadHeader title={props.title} description={props.description} />
       {props.infoSection && <UploadInfoSection {...props.infoSection} />}
@@ -144,6 +161,7 @@ const FilePDFUploadSection = (props) => {
         title={props.uploadBoxTitle}
         accept={props.inputTypeAccept}
         multiple={true}
+        isLoading={isLoading}
       />
 
       {uploadData?.length !== 0 && (

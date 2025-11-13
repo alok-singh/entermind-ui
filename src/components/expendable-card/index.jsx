@@ -2,6 +2,7 @@ import { ChevronDown, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
 import iconMap from '../../icons/lucid-icons';
 import Card from '../card';
+import Badge from '../badge';
 
 const ExpendableCard = (props) => {
   const [expanded, setExpanded] = useState(false);
@@ -33,13 +34,12 @@ const ExpendableCard = (props) => {
             <div key={idx} className="flex justify-between items-center p-3 bg-gray-100 text-sm my-2">
               <div className="flex items-center gap-3">
                 <span className="text-gray-700">{item.name}</span>
-                <span
-                  className={`text-xs px-2 py-1 rounded ${
-                    item.status === 'increasing' ? 'bg-red-100 text-[#f36]' : item.status === 'decreasing' ? 'text-[#00d68f]' : 'bg-blue-100 text-[#06f]'
+                <Badge
+                  text={item.status}
+                  className={`border ${
+                    item.status === 'increasing' ? 'border-[#fb2c364d] text-[#f36]' : item.status === 'decreasing' ? 'text-[#00d68f] border-[#00c9514d]' : 'border-[#2b7fff4d] text-[#06f]'
                   }`}
-                >
-                  {item.status}
-                </span>
+                />
               </div>
               <span className="text-gray-800 font-medium">{item.amount}</span>
             </div>

@@ -19,7 +19,7 @@ const genericNumberValidator = (value) => {
   return { isValid: true, value: parseFloat(value) };
 };
 
-const genericDateValidator = (value) => {
+export const genericDateValidator = (value) => {
   const regex = /^\d{4}-\d{2}-\d{2}$/;
   if (regex.test(value) || value instanceof Date) {
     const [year, month, date] = value.split('-').map(item => parseInt(item));
