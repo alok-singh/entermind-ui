@@ -5,7 +5,7 @@ import PageHeader from '../../components/page-header';
 import Tabs from '../../components/tabs';
 import { GET_COST_ANOMALIES_URL, GET_COST_URL } from '../../config/vars';
 import { getCostPageData } from '../../data/cost.parser';
-import { setAnomaliesData, setCostData, setSelectedTabIndex } from '../../reducers/cost-reducer';
+import { setAnomaliesData, setCostData, setCostLoading, setSelectedTabIndex } from '../../reducers/cost-reducer';
 import { getResource } from '../../utils/http.util';
 import AnomalySection from './anomaly-section';
 import CostBreakdownSection from './cost-breakdown-section';
@@ -18,10 +18,12 @@ const CostExplorer = () => {
   const { selectedTabIndex } = costPageState;
 
   useEffect(() => {
+    dispatch(setCostLoading(true));
     const innerFunction = async () => {
       const [costResult, anomaliesResult] = await Promise.all([getResource(GET_COST_URL), getResource(GET_COST_ANOMALIES_URL)]);
       dispatch(setCostData(costResult?.response?.data || []));
       dispatch(setAnomaliesData(anomaliesResult?.response?.data || []));
+      dispatch(setCostLoading(false));
     };
     innerFunction();
   }, []);

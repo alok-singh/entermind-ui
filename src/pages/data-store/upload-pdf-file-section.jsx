@@ -1,13 +1,13 @@
-import { Info, Loader, Sparkles } from 'lucide-react';
+import { Info, Sparkles } from 'lucide-react';
 import { useDispatch, useSelector } from 'react-redux';
-import AwsBillPdfPreview from '../../components/awsBillPdfPreview';
+import AwsBillPdfPreview from '../../components/aws-bill-pdf-preview';
 import Button from '../../components/button';
 import Card from '../../components/card';
 import UploadInput from '../../components/upload-input';
 import { CLIENT_ID, POST_COST_URL, POST_UPLOAD_PDF, SUPPORTED_PDF_FILE_TYPES } from '../../config/vars';
 import iconMap from '../../icons/lucid-icons';
 import { setUploadPDFData, setUploadPDFLoading } from '../../reducers/data-page-reducer';
-import { formatDateToYYYYMMDD, parseAWSDateRange } from '../../utils/date.util';
+import { parseAWSDateRange } from '../../utils/date.util';
 import { postResource, uploadPdf } from '../../utils/http.util';
 import { removeEmpty } from '../../utils/parse.util';
 

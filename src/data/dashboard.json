@@ -83,6 +83,13 @@
               "data": [15, 21, 33, 14, 23, 61]
             }
           ]
+        },
+        "options": {
+          "plugins": {
+            "legend": {
+              "display": false
+            }
+          }
         }
       },
       {
@@ -96,9 +103,18 @@
           "datasets": [
             {
               "label": "ROI",
-              "data": [39, 330, 350, 371, 391, 402]
+              "data": [39, 330, 350, 371, 391, 402],
+              "backgroundColor": "#06f",
+              "borderRadius": 5
             }
           ]
+        },
+        "options": {
+          "plugins": {
+            "legend": {
+              "display": false
+            }
+          }
         }
       }
     ]

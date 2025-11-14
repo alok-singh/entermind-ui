@@ -80,7 +80,7 @@ const AnomalySection = (props) => {
       {props.alertCard.map((item) => {
         return <AlertCard {...item} />;
       })}
-      {props.alertCard.length === 0 ? <Empty title="No data yet" description="Upload data to see results" /> : null}
+      {props.alertCard.length === 0 ? <Empty title="No data yet" className="p-10" description="Upload data to see results" /> : null}
     </div>
   );
 };

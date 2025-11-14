@@ -7,7 +7,7 @@ const CostBreakdownSection = (props) => {
       {props.breakdownList.map((item) => {
         return <ExpendableCard {...item} className="mt-2" />;
       })}
-      {props.breakdownList.length === 0 ? <Empty title="No data yet" description="Upload data to see results" /> : null}
+      {props.breakdownList.length === 0 ? <Empty title="No data yet" className="p-10" description="Upload data to see results" /> : null}
     </div>
   );
 };

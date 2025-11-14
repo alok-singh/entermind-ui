@@ -107,7 +107,7 @@ const extractIntervalCosts = (data, key = 'annualizedCost') => {
   return list;
 }
 
-const getCostBreakdownChart = (costData) => {
+const getCostBreakdownChart = (costData, isLoading) => {
   const costMap = groupByOnKey(costData, 'category');
   const plotList = Object.keys(costMap).map((category) => {
     return {
@@ -119,6 +119,8 @@ const getCostBreakdownChart = (costData) => {
     id: "categoryBreakdown",
     title: "Category Breakdown",
     type: "bar",
+    isLoading,
+    isEmpty: plotList.length === 0,
     data: {
       labels: plotList.map(item => item.label),
       datasets: [
@@ -150,7 +152,7 @@ const getCostBreakdownChart = (costData) => {
   }
 }
 
-const getCostDistributionChart = (costData) => {
+const getCostDistributionChart = (costData, isLoading) => {
   const costMap = groupByOnKey(costData, 'category');
   const plotList = Object.keys(costMap).map((category) => {
     return {
@@ -162,6 +164,8 @@ const getCostDistributionChart = (costData) => {
     id: "costDistribution",
     title: "Cost by Category",
     type: "treemap",
+    isLoading,
+    isEmpty: plotList.length === 0,
     data: {
       labels: plotList.length ? plotList.map(item => item.label) : [],
       datasets: [
@@ -264,6 +268,7 @@ export const getCostPageData = (state) => {
   const totalAnomaliesAdditionalCost = calculateSumOfKeyValue(state.anomalies, 'additionalMonthlyCost');
   const highPriorityAnomalies = state.anomalies.filter(item => item.priority === 'high');
   const { yearly, quarterly, monthly } = getTrend(state.costData);
+  const { isLoading } = state;
   return {
     metricSection: {
       icon: "dollar",
@@ -333,8 +338,8 @@ export const getCostPageData = (state) => {
     tabsSection: [{ title: "TCO Overview" }, { title: "Category Breakdown" }, { title: "Anomalies" }, { title: "AI Recommendations" }],
     costOverview: {
       chartSection: {
-        costDistribution: getCostDistributionChart(state.costData),
-        categoryBreakdown: getCostBreakdownChart(state.costData)
+        costDistribution: getCostDistributionChart(state.costData, isLoading),
+        categoryBreakdown: getCostBreakdownChart(state.costData, isLoading)
       },
       costTrendSection: {
         trends: [
